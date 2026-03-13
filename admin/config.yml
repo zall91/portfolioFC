@@ -2,16 +2,34 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "img" # Où seront stockées tes images
+media_folder: "img"
 public_folder: "/img"
 
 collections:
   - name: "projets"
-    label: "Mes Projets SISR"
+    label: "Mes Projets (PPE / Stages)"
     folder: "projets"
     create: true
     fields:
-      - {label: "Titre du projet", name: "title", widget: "string"}
-      - {label: "Catégorie (Réseau/Système/Cyber)", name: "category", widget: "string"}
-      - {label: "Description", name: "body", widget: "markdown"}
-      - {label: "Image du projet", name: "image", widget: "image"}
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Description Courte", name: "description", widget: "string"}
+      - {label: "Contenu Complet", name: "body", widget: "markdown"}
+
+  - name: "parcours"
+    label: "Mon Parcours (CV/Diplômes)"
+    folder: "parcours"
+    create: true
+    fields:
+      - {label: "Année / Période", name: "title", widget: "string"}
+      - {label: "Établissement / Entreprise", name: "subtitle", widget: "string"}
+      - {label: "Détails", name: "body", widget: "markdown"}
+
+  - name: "veille"
+    label: "Veille Informatique"
+    folder: "veille"
+    create: true
+    fields:
+      - {label: "Sujet de veille", name: "title", widget: "string"}
+      - {label: "Lien source", name: "url", widget: "string"}
+      - {label: "Résumé", name: "body", widget: "markdown"}
