@@ -62,17 +62,21 @@
                     
                     // Petit nettoyage pour extraire les infos du fichier créé par l'admin
                     const title = content.match(/title: (.*)/)?.[1] || "Sans titre";
+                    const image = content.match(/image: (.*)/)?.[1] || "";
                     const category = content.match(/category: (.*)/)?.[1] || "SISR";
                     const body = content.split('---').pop().trim();
                     
                     // On injecte le HTML
                     container.innerHTML += `
-                        <div class="bg-[#161b22] p-8 rounded-xl border border-gray-800 hover:border-blue-500 transition group" data-aos="fade-up">
-                            <span class="text-blue-500 text-xs font-bold uppercase tracking-widest">${category}</span>
-                            <h3 class="text-2xl font-bold mt-2 group-hover:text-blue-400">${title}</h3>
-                            <p class="mt-4 text-gray-400">${body.substring(0, 150)}...</p>
-                        </div>
-                    `;
+    <div class="bg-[#161b22] p-8 rounded-xl border border-gray-800 hover:border-blue-500 transition group cursor-pointer" 
+         onclick="ouvrirProjet('${file.name}')">
+        ${image ? `<img src="${image}" class="w-full h-32 object-contain mb-4 rounded">` : ''}
+        <span class="text-blue-500 text-xs font-bold uppercase tracking-widest">${category}</span>
+        <h3 class="text-2xl font-bold mt-2 group-hover:text-blue-400">${title}</h3>
+        <p class="mt-4 text-gray-400 text-sm">${body.substring(0, 100)}...</p>
+        <span class="text-blue-400 text-xs mt-4 inline-block font-bold italic">Cliquez pour lire la suite →</span>
+    </div>
+`;
                 }
             }
         } catch (e) {
