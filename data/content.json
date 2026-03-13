@@ -1,30 +1,30 @@
 {
   "site": {
-    "name": "François CAMON",
-    "title": "BTS SIO — Option SISR",
-    "description": "Administrateur Systèmes & Réseaux en formation. Passionné par l'infrastructure, la virtualisation et la cybersécurité.",
+    "name": "FranÃ§ois CAMON",
+    "title": "BTS SIO â Option SISR",
+    "description": "Administrateur SystÃ¨mes & RÃ©seaux en formation. PassionnÃ© par l'infrastructure, la virtualisation et la cybersÃ©curitÃ©.",
     "email": "votre.email@example.com",
-    "location": "Votre ville, France",
-    "linkedin": ""
+    "location": "Carantec, France",
+    "linkedin": "www.linkedin.com/in/francois-camon"
   },
   "parcours": [
     {
       "id": "p1",
-      "year": "2024 — 2026",
+      "year": "2024 â 2026",
       "place": "BTS SIO option SISR",
-      "desc": "Solutions d'Infrastructure, Systèmes et Réseaux. Administration serveurs, virtualisation, sécurité réseau, scripting."
+      "desc": "Solutions d'Infrastructure, SystÃ¨mes et RÃ©seaux. Administration serveurs, virtualisation, sÃ©curitÃ© rÃ©seau, scripting."
     },
     {
       "id": "p2",
       "year": "2025 (Stage)",
       "place": "Stage en entreprise",
-      "desc": "Maintenance parc informatique, déploiement postes, support utilisateurs."
+      "desc": "Maintenance parc informatique, dÃ©ploiement postes, support utilisateurs."
     },
     {
       "id": "p3",
-      "year": "2022 — 2024",
-      "place": "Baccalauréat",
-      "desc": "Obtention du baccalauréat, orientation vers l'informatique et les réseaux."
+      "year": "2022 â 2024",
+      "place": "BaccalaurÃ©at",
+      "desc": "Obtention du baccalaurÃ©at, orientation vers l'informatique et les rÃ©seaux."
     }
   ],
   "projets": [
@@ -32,48 +32,48 @@
       "id": "proj1",
       "title": "Cluster Proxmox VE",
       "category": "Infrastructure",
-      "description": "Mise en place d'un environnement de virtualisation haute disponibilité avec stockage partagé NFS.",
-      "content": "<p><strong>Contexte :</strong> Projet réalisé en TP dans le cadre du BTS SIO SISR.</p><p><strong>Objectif :</strong> Mettre en place un environnement de virtualisation haute disponibilité.</p><p><strong>Technologies :</strong> Proxmox VE 8.x, stockage NFS, cluster 2 nœuds, migration à chaud, sauvegarde PBS.</p><p><strong>Résultat :</strong> Infrastructure fonctionnelle permettant la migration de VM sans interruption de service.</p>"
+      "description": "Mise en place d'un environnement de virtualisation haute disponibilitÃ© avec stockage partagÃ© NFS.",
+      "content": "<p><strong>Contexte :</strong> Projet rÃ©alisÃ© en TP dans le cadre du BTS SIO SISR.</p><p><strong>Objectif :</strong> Mettre en place un environnement de virtualisation haute disponibilitÃ©.</p><p><strong>Technologies :</strong> Proxmox VE 8.x, stockage NFS, cluster 2 nÅuds, migration Ã  chaud, sauvegarde PBS.</p><p><strong>RÃ©sultat :</strong> Infrastructure fonctionnelle permettant la migration de VM sans interruption de service.</p>"
     },
     {
       "id": "proj2",
       "title": "Firewall pfSense",
-      "category": "Sécurité",
+      "category": "SÃ©curitÃ©",
       "description": "Configuration d'un pare-feu avec VPN IPSec, filtrage de contenu et portail captif.",
-      "content": "<p><strong>Contexte :</strong> Sécurisation du réseau d'un labo technique.</p><p><strong>Objectif :</strong> Déployer un pare-feu open source pour filtrer le trafic et créer des tunnels VPN.</p><p><strong>Technologies :</strong> pfSense CE, VPN IPSec, Squid + SquidGuard, portail captif RADIUS.</p><p><strong>Résultat :</strong> Réseau sécurisé avec séparation des flux et accès contrôlé.</p>"
+      "content": "<p><strong>Contexte :</strong> SÃ©curisation du rÃ©seau d'un labo technique.</p><p><strong>Objectif :</strong> DÃ©ployer un pare-feu open source pour filtrer le trafic et crÃ©er des tunnels VPN.</p><p><strong>Technologies :</strong> pfSense CE, VPN IPSec, Squid + SquidGuard, portail captif RADIUS.</p><p><strong>RÃ©sultat :</strong> RÃ©seau sÃ©curisÃ© avec sÃ©paration des flux et accÃ¨s contrÃ´lÃ©.</p>"
     },
     {
       "id": "proj3",
       "title": "Segmentation VLAN",
-      "category": "Réseau",
-      "description": "Configuration de VLANs et ACLs sur switches Cisco pour isoler les flux réseau.",
-      "content": "<p><strong>Contexte :</strong> Projet de TP réseau dans le cadre du module SI2.</p><p><strong>Objectif :</strong> Segmenter un réseau d'entreprise en plusieurs VLANs.</p><p><strong>Technologies :</strong> Switches Cisco Catalyst, VLANs, trunking 802.1Q, routage inter-VLAN, ACLs.</p><p><strong>Résultat :</strong> Réseau segmenté avec politique d'accès entre les départements.</p>"
+      "category": "RÃ©seau",
+      "description": "Configuration de VLANs et ACLs sur switches Cisco pour isoler les flux rÃ©seau.",
+      "content": "<p><strong>Contexte :</strong> Projet de TP rÃ©seau dans le cadre du module SI2.</p><p><strong>Objectif :</strong> Segmenter un rÃ©seau d'entreprise en plusieurs VLANs.</p><p><strong>Technologies :</strong> Switches Cisco Catalyst, VLANs, trunking 802.1Q, routage inter-VLAN, ACLs.</p><p><strong>RÃ©sultat :</strong> RÃ©seau segmentÃ© avec politique d'accÃ¨s entre les dÃ©partements.</p>"
     },
     {
       "id": "proj4",
       "title": "Active Directory",
-      "category": "Système",
-      "description": "Déploiement d'un domaine AD avec GPO, DHCP, DNS et gestion centralisée.",
-      "content": "<p><strong>Contexte :</strong> Projet de TP système dans le cadre du module SI1.</p><p><strong>Objectif :</strong> Installer et configurer un domaine Active Directory complet.</p><p><strong>Technologies :</strong> Windows Server 2022, AD DS, DNS, DHCP, GPO, profils itinérants.</p><p><strong>Résultat :</strong> Domaine fonctionnel avec gestion centralisée de 30+ comptes utilisateurs.</p>"
+      "category": "SystÃ¨me",
+      "description": "DÃ©ploiement d'un domaine AD avec GPO, DHCP, DNS et gestion centralisÃ©e.",
+      "content": "<p><strong>Contexte :</strong> Projet de TP systÃ¨me dans le cadre du module SI1.</p><p><strong>Objectif :</strong> Installer et configurer un domaine Active Directory complet.</p><p><strong>Technologies :</strong> Windows Server 2022, AD DS, DNS, DHCP, GPO, profils itinÃ©rants.</p><p><strong>RÃ©sultat :</strong> Domaine fonctionnel avec gestion centralisÃ©e de 30+ comptes utilisateurs.</p>"
     }
   ],
   "veille": [
     {
       "id": "v1",
       "title": "Zero Trust Architecture",
-      "summary": "Le modèle de sécurité Zero Trust remet en question la confiance implicite dans les réseaux d'entreprise. Chaque requête est authentifiée et autorisée.",
+      "summary": "Le modÃ¨le de sÃ©curitÃ© Zero Trust remet en question la confiance implicite dans les rÃ©seaux d'entreprise. Chaque requÃªte est authentifiÃ©e et autorisÃ©e.",
       "url": ""
     },
     {
       "id": "v2",
       "title": "Conteneurisation (Docker)",
-      "summary": "Docker et Kubernetes transforment le déploiement des applications en isolant les services dans des conteneurs légers et portables.",
+      "summary": "Docker et Kubernetes transforment le dÃ©ploiement des applications en isolant les services dans des conteneurs lÃ©gers et portables.",
       "url": ""
     },
     {
       "id": "v3",
-      "title": "IA et Cybersécurité",
-      "summary": "L'intelligence artificielle est de plus en plus utilisée pour détecter les menaces en temps réel et automatiser les réponses aux incidents.",
+      "title": "IA et CybersÃ©curitÃ©",
+      "summary": "L'intelligence artificielle est de plus en plus utilisÃ©e pour dÃ©tecter les menaces en temps rÃ©el et automatiser les rÃ©ponses aux incidents.",
       "url": ""
     }
   ]
