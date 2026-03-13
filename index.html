@@ -76,10 +76,12 @@
                 }
             }
         } catch (e) {
-            container.innerHTML = '<p>Ajoutez votre premier projet via l\'admin !</p>';
+            console.error("Erreur :", e);
+            container.innerHTML = '<p>Erreur lors du chargement. Vérifiez votre dossier "projets" sur GitHub.</p>';
         }
     }
-    chargerProjets();
+    // On attend 1 seconde que tout soit bien chargé
+    setTimeout(chargerProjets, 1000);
 </script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
