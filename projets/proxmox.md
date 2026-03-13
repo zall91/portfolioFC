@@ -2,6 +2,7 @@
 title: Proxmox
 category: SYSTEME
 image: /img/logo-proxmox-1024x852.jpg
+description: mon projet proxmox
 ---
 deploiement d un serveur proxmox
 
