@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: ton-pseudo-github/tonprenom-tonnom.github.io # REMPLACE PAR TON REPO
+  repo: zall91/portfolioFC.github.io # REMPLACE PAR TON REPO
   branch: main
 
 media_folder: "img" # Où seront stockées tes images
