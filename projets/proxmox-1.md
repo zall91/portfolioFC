@@ -1,6 +1,6 @@
 ---
-title: Proxmox
-category: SYSTEME
-image: /img/logo-proxmox-1024x852.jpg
+title: le blob
+category: CYBER
+image: https://www.istockphoto.com/fr/photos/cybers%C3%A9curit%C3%A9
 ---
-deploiement d un serveur proxmox
+c est chaud
