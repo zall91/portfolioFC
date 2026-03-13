@@ -1,0 +1,18 @@
+backend:
+  name: github
+  repo: ton-pseudo-github/tonprenom-tonnom.github.io # REMPLACE PAR TON REPO
+  branch: main
+
+media_folder: "img" # Où seront stockées tes images
+public_folder: "/img"
+
+collections:
+  - name: "projets"
+    label: "Mes Projets SISR"
+    folder: "projets"
+    create: true
+    fields:
+      - {label: "Titre du projet", name: "title", widget: "string"}
+      - {label: "Catégorie (Réseau/Système/Cyber)", name: "category", widget: "string"}
+      - {label: "Description", name: "body", widget: "markdown"}
+      - {label: "Image du projet", name: "image", widget: "image"}
