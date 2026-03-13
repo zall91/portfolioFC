@@ -1,0 +1,80 @@
+{
+  "site": {
+    "name": "François CAMON",
+    "title": "BTS SIO — Option SISR",
+    "description": "Administrateur Systèmes & Réseaux en formation. Passionné par l'infrastructure, la virtualisation et la cybersécurité.",
+    "email": "votre.email@example.com",
+    "location": "Votre ville, France",
+    "linkedin": ""
+  },
+  "parcours": [
+    {
+      "id": "p1",
+      "year": "2024 — 2026",
+      "place": "BTS SIO option SISR",
+      "desc": "Solutions d'Infrastructure, Systèmes et Réseaux. Administration serveurs, virtualisation, sécurité réseau, scripting."
+    },
+    {
+      "id": "p2",
+      "year": "2025 (Stage)",
+      "place": "Stage en entreprise",
+      "desc": "Maintenance parc informatique, déploiement postes, support utilisateurs."
+    },
+    {
+      "id": "p3",
+      "year": "2022 — 2024",
+      "place": "Baccalauréat",
+      "desc": "Obtention du baccalauréat, orientation vers l'informatique et les réseaux."
+    }
+  ],
+  "projets": [
+    {
+      "id": "proj1",
+      "title": "Cluster Proxmox VE",
+      "category": "Infrastructure",
+      "description": "Mise en place d'un environnement de virtualisation haute disponibilité avec stockage partagé NFS.",
+      "content": "<p><strong>Contexte :</strong> Projet réalisé en TP dans le cadre du BTS SIO SISR.</p><p><strong>Objectif :</strong> Mettre en place un environnement de virtualisation haute disponibilité.</p><p><strong>Technologies :</strong> Proxmox VE 8.x, stockage NFS, cluster 2 nœuds, migration à chaud, sauvegarde PBS.</p><p><strong>Résultat :</strong> Infrastructure fonctionnelle permettant la migration de VM sans interruption de service.</p>"
+    },
+    {
+      "id": "proj2",
+      "title": "Firewall pfSense",
+      "category": "Sécurité",
+      "description": "Configuration d'un pare-feu avec VPN IPSec, filtrage de contenu et portail captif.",
+      "content": "<p><strong>Contexte :</strong> Sécurisation du réseau d'un labo technique.</p><p><strong>Objectif :</strong> Déployer un pare-feu open source pour filtrer le trafic et créer des tunnels VPN.</p><p><strong>Technologies :</strong> pfSense CE, VPN IPSec, Squid + SquidGuard, portail captif RADIUS.</p><p><strong>Résultat :</strong> Réseau sécurisé avec séparation des flux et accès contrôlé.</p>"
+    },
+    {
+      "id": "proj3",
+      "title": "Segmentation VLAN",
+      "category": "Réseau",
+      "description": "Configuration de VLANs et ACLs sur switches Cisco pour isoler les flux réseau.",
+      "content": "<p><strong>Contexte :</strong> Projet de TP réseau dans le cadre du module SI2.</p><p><strong>Objectif :</strong> Segmenter un réseau d'entreprise en plusieurs VLANs.</p><p><strong>Technologies :</strong> Switches Cisco Catalyst, VLANs, trunking 802.1Q, routage inter-VLAN, ACLs.</p><p><strong>Résultat :</strong> Réseau segmenté avec politique d'accès entre les départements.</p>"
+    },
+    {
+      "id": "proj4",
+      "title": "Active Directory",
+      "category": "Système",
+      "description": "Déploiement d'un domaine AD avec GPO, DHCP, DNS et gestion centralisée.",
+      "content": "<p><strong>Contexte :</strong> Projet de TP système dans le cadre du module SI1.</p><p><strong>Objectif :</strong> Installer et configurer un domaine Active Directory complet.</p><p><strong>Technologies :</strong> Windows Server 2022, AD DS, DNS, DHCP, GPO, profils itinérants.</p><p><strong>Résultat :</strong> Domaine fonctionnel avec gestion centralisée de 30+ comptes utilisateurs.</p>"
+    }
+  ],
+  "veille": [
+    {
+      "id": "v1",
+      "title": "Zero Trust Architecture",
+      "summary": "Le modèle de sécurité Zero Trust remet en question la confiance implicite dans les réseaux d'entreprise. Chaque requête est authentifiée et autorisée.",
+      "url": ""
+    },
+    {
+      "id": "v2",
+      "title": "Conteneurisation (Docker)",
+      "summary": "Docker et Kubernetes transforment le déploiement des applications en isolant les services dans des conteneurs légers et portables.",
+      "url": ""
+    },
+    {
+      "id": "v3",
+      "title": "IA et Cybersécurité",
+      "summary": "L'intelligence artificielle est de plus en plus utilisée pour détecter les menaces en temps réel et automatiser les réponses aux incidents.",
+      "url": ""
+    }
+  ]
+}

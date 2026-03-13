@@ -3,1037 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio BTS SIO SISR de François CAMON — Administrateur Systèmes & Réseaux">
-    <meta name="author" content="François CAMON">
-    <title>François CAMON — Portfolio BTS SIO SISR</title>
+    <meta name="description" content="Portfolio BTS SIO SISR — Administrateur Systèmes & Réseaux">
+    <title>Portfolio BTS SIO SISR</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* ═══════════════════════════════════════════
-           CSS VARIABLES & RESET
-           ═══════════════════════════════════════════ */
         :root {
-            --bg-primary: #0a0e17;
+            --bg: #0a0e17;
             --bg-card: #111827;
-            --bg-card-hover: #1a2332;
+            --bg-hover: #1a2332;
             --border: #1e2d3d;
             --accent: #38bdf8;
             --accent-dim: #0c4a6e;
-            --accent-glow: rgba(56, 189, 248, 0.15);
+            --accent-glow: rgba(56,189,248,0.12);
             --green: #34d399;
             --orange: #fb923c;
             --red: #f87171;
             --text: #e2e8f0;
             --text-dim: #64748b;
-            --font-display: 'Outfit', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
+            --font: 'Outfit', sans-serif;
+            --mono: 'JetBrains Mono', monospace;
         }
-
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: var(--font-display);
-            background: var(--bg-primary);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        ::selection { background: var(--accent); color: var(--bg-primary); }
-
-        a { color: inherit; text-decoration: none; }
-
-        /* ═══════════════════════════════════════════
-           BACKGROUND GRID EFFECT
-           ═══════════════════════════════════════════ */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* ═══════════════════════════════════════════
-           NAVIGATION
-           ═══════════════════════════════════════════ */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 2rem;
-            transition: background 0.3s, box-shadow 0.3s;
-        }
-
-        .navbar.scrolled {
-            background: rgba(10, 14, 23, 0.92);
-            backdrop-filter: blur(16px);
-            box-shadow: 0 1px 0 var(--border);
-        }
-
-        .nav-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-logo .accent { color: var(--accent); }
-
-        .nav-links { display: flex; gap: 2rem; align-items: center; }
-
-        .nav-links a {
-            font-size: 0.78rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-dim);
-            transition: color 0.2s;
-            position: relative;
-        }
-
-        .nav-links a:hover { color: var(--accent); }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after { width: 100%; }
-
-        .nav-contact-btn {
-            background: var(--accent) !important;
-            color: var(--bg-primary) !important;
-            padding: 0.5rem 1.2rem;
-            border-radius: 6px;
-            font-weight: 700 !important;
-        }
-
-        .nav-contact-btn::after { display: none !important; }
-        .nav-contact-btn:hover { opacity: 0.85; }
-
-        /* Hamburger */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 4px;
-        }
-
-        .hamburger span {
-            width: 24px;
-            height: 2px;
-            background: var(--text);
-            transition: all 0.3s;
-            border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(10, 14, 23, 0.97);
-            backdrop-filter: blur(20px);
-            z-index: 999;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .mobile-menu.active { display: flex; }
-
-        .mobile-menu a {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            transition: color 0.2s;
-        }
-
-        .mobile-menu a:hover { color: var(--accent); }
-
-        /* ═══════════════════════════════════════════
-           HERO SECTION
-           ═══════════════════════════════════════════ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 6rem 2rem 4rem;
-            position: relative;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--green);
-            border: 1px solid rgba(52, 211, 153, 0.3);
-            padding: 0.4rem 1rem;
-            border-radius: 100px;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 7vw, 5.5rem);
-            font-weight: 900;
-            line-height: 1.05;
-            letter-spacing: -2px;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 .line2 { color: var(--accent); }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-dim);
-            max-width: 520px;
-            font-weight: 300;
-        }
-
-        .hero-scroll {
-            margin-top: 4rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-dim);
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            animation: float 2s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(8px); }
-        }
-
-        /* ═══════════════════════════════════════════
-           SECTIONS (GENERAL)
-           ═══════════════════════════════════════════ */
-        section { position: relative; z-index: 1; }
-
-        .section-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
-        }
-
-        .section-header {
-            margin-bottom: 3.5rem;
-        }
-
-        .section-label {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--accent);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 0.75rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            letter-spacing: -1px;
-        }
-
-        /* ═══════════════════════════════════════════
-           PARCOURS (TIMELINE)
-           ═══════════════════════════════════════════ */
-        #parcours { background: linear-gradient(180deg, var(--bg-primary) 0%, #0d1220 100%); }
-
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--accent), transparent);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding: 0 0 3rem 2rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2rem;
-            top: 6px;
-            width: 12px;
-            height: 12px;
-            background: var(--accent);
-            border-radius: 50%;
-            border: 3px solid var(--bg-primary);
-            transform: translateX(-5px);
-        }
-
-        .timeline-year {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .timeline-place {
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin: 0.3rem 0;
-        }
-
-        .timeline-desc { color: var(--text-dim); font-size: 0.95rem; }
-
-        /* ═══════════════════════════════════════════
-           PROJETS (CARDS)
-           ═══════════════════════════════════════════ */
-        #projets { background: #080c14; }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--green));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(56, 189, 248, 0.08);
-        }
-
-        .project-card:hover::before { opacity: 1; }
-
-        .project-tag {
-            display: inline-block;
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 0.25rem 0.75rem;
-            border-radius: 100px;
-            margin-bottom: 1rem;
-        }
-
-        .tag-infra { color: var(--accent); background: var(--accent-glow); }
-        .tag-secu { color: var(--green); background: rgba(52, 211, 153, 0.12); }
-        .tag-reseau { color: var(--orange); background: rgba(251, 146, 60, 0.12); }
-
-        .project-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            transition: color 0.2s;
-        }
-
-        .project-card:hover h3 { color: var(--accent); }
-
-        .project-card p { color: var(--text-dim); font-size: 0.9rem; }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            margin-top: 1.2rem;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--accent);
-            letter-spacing: 0.5px;
-        }
-
-        /* ═══════════════════════════════════════════
-           MODALE PROJET
-           ═══════════════════════════════════════════ */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-        }
-
-        .modal-overlay.active { display: flex; }
-
-        .modal-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            max-width: 720px;
-            width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
-            padding: 3rem;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1.2rem;
-            right: 1.2rem;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 1px solid var(--border);
-            background: var(--bg-primary);
-            color: var(--text);
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: border-color 0.2s;
-        }
-
-        .modal-close:hover { border-color: var(--accent); }
-
-        .modal-box h2 {
-            font-size: 2rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-divider {
-            width: 40px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 3px;
-            margin: 1rem 0 1.5rem;
-        }
-
-        .modal-box .content { color: var(--text-dim); font-size: 1rem; line-height: 1.8; }
-        .modal-box .content strong { color: var(--text); }
-        .modal-box .content ul { margin: 0.5rem 0; padding-left: 1.5rem; }
-        .modal-box .content li { margin-bottom: 0.3rem; }
-
-        /* ═══════════════════════════════════════════
-           VEILLE TECHNOLOGIQUE
-           ═══════════════════════════════════════════ */
-        #veille { background: linear-gradient(180deg, #080c14 0%, var(--bg-primary) 100%); }
-
-        .veille-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .veille-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.8rem;
-            transition: border-color 0.3s;
-        }
-
-        .veille-card:hover { border-color: var(--accent); }
-
-        .veille-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-        }
-
-        .veille-card p { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 1rem; }
-
-        .veille-source {
-            display: inline-block;
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--accent);
-            background: var(--accent-glow);
-            padding: 0.3rem 0.8rem;
-            border-radius: 100px;
-        }
-
-        /* ═══════════════════════════════════════════
-           CONTACT
-           ═══════════════════════════════════════════ */
-        #contact { background: var(--bg-primary); }
-
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .contact-info h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info p { color: var(--text-dim); margin-bottom: 2rem; }
-
-        .contact-detail {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        .contact-detail .icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            background: var(--accent-glow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 0.9rem 1.2rem;
-            color: var(--text);
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            transition: border-color 0.2s;
-            outline: none;
-            width: 100%;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus { border-color: var(--accent); }
-
-        .contact-form textarea { min-height: 140px; resize: vertical; }
-
-        .contact-form button {
-            background: var(--accent);
-            color: var(--bg-primary);
-            border: none;
-            border-radius: 10px;
-            padding: 0.9rem 2rem;
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: opacity 0.2s;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-form button:hover { opacity: 0.85; }
-
-        /* ═══════════════════════════════════════════
-           FOOTER
-           ═══════════════════════════════════════════ */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-dim);
-            font-size: 0.75rem;
-            border-top: 1px solid var(--border);
-            font-family: var(--font-mono);
-        }
-
-        /* ═══════════════════════════════════════════
-           RESPONSIVE
-           ═══════════════════════════════════════════ */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
-
-            .hero h1 { letter-spacing: -1px; }
-
-            .contact-wrapper { grid-template-columns: 1fr; }
-
-            .projects-grid,
-            .veille-grid { grid-template-columns: 1fr; }
-
-            .section-title { font-size: 2rem; }
-
-            .modal-box { padding: 2rem 1.5rem; }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+        ::selection{background:var(--accent);color:var(--bg)}
+        a{color:inherit;text-decoration:none}
+
+        /* grid background */
+        body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(56,189,248,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+
+        /* ── NAV ── */
+        .nav{position:fixed;top:0;width:100%;z-index:1000;padding:1rem 2rem;transition:background .3s,box-shadow .3s}
+        .nav.scrolled{background:rgba(10,14,23,.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--border)}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+        .nav-logo{font-family:var(--mono);font-weight:700;font-size:1.1rem}.nav-logo .a{color:var(--accent)}
+        .nav-links{display:flex;gap:2rem;align-items:center}
+        .nav-links a{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dim);transition:color .2s;position:relative}
+        .nav-links a:hover{color:var(--accent)}
+        .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width .3s}
+        .nav-links a:hover::after{width:100%}
+        .nav-cta{background:var(--accent)!important;color:var(--bg)!important;padding:.5rem 1.2rem;border-radius:6px;font-weight:700!important}
+        .nav-cta::after{display:none!important}
+        .nav-cta:hover{opacity:.85}
+        .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:0;border:0;padding:4px}
+        .burger span{width:24px;height:2px;background:var(--text);transition:.3s;border-radius:2px}
+        .burger.on span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+        .burger.on span:nth-child(2){opacity:0}
+        .burger.on span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+        .mob-menu{display:none;position:fixed;inset:0;background:rgba(10,14,23,.97);backdrop-filter:blur(20px);z-index:999;flex-direction:column;justify-content:center;align-items:center;gap:2rem}
+        .mob-menu.on{display:flex}
+        .mob-menu a{font-size:1.5rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);transition:color .2s}
+        .mob-menu a:hover{color:var(--accent)}
+
+        /* ── HERO ── */
+        .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 2rem 4rem;position:relative}
+        .hero-badge{display:inline-block;font-family:var(--mono);font-size:.75rem;color:var(--green);border:1px solid rgba(52,211,153,.3);padding:.4rem 1rem;border-radius:100px;margin-bottom:2rem;letter-spacing:1px}
+        .hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:1.5rem}
+        .hero h1 .hl{color:var(--accent)}
+        .hero p{font-size:1.15rem;color:var(--text-dim);max-width:520px;font-weight:300}
+        .hero-scroll{margin-top:4rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--text-dim);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;animation:fl 2s ease-in-out infinite}
+        @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+        /* ── SECTIONS ── */
+        section{position:relative;z-index:1}
+        .sc{max-width:1100px;margin:0 auto;padding:6rem 2rem}
+        .sh{margin-bottom:3.5rem}
+        .sl{font-family:var(--mono);font-size:.7rem;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:.75rem}
+        .st{font-size:2.5rem;font-weight:900;letter-spacing:-1px}
+
+        /* ── PARCOURS ── */
+        #parcours{background:linear-gradient(180deg,var(--bg),#0d1220)}
+        .tl{position:relative;padding-left:2rem}
+        .tl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),transparent)}
+        .tl-item{position:relative;padding:0 0 3rem 2rem}
+        .tl-item::before{content:'';position:absolute;left:-2rem;top:6px;width:12px;height:12px;background:var(--accent);border-radius:50%;border:3px solid var(--bg);transform:translateX(-5px)}
+        .tl-year{font-family:var(--mono);font-size:.8rem;color:var(--accent);font-weight:700}
+        .tl-place{font-size:1.35rem;font-weight:700;margin:.3rem 0}
+        .tl-desc{color:var(--text-dim);font-size:.95rem}
+
+        /* ── PROJETS ── */
+        #projets{background:#080c14}
+        .pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+        .pc{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative;overflow:hidden}
+        .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--green));opacity:0;transition:opacity .3s}
+        .pc:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(56,189,248,.08)}
+        .pc:hover::before{opacity:1}
+        .pc:hover h3{color:var(--accent)}
+        .tag{display:inline-block;font-family:var(--mono);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:.25rem .75rem;border-radius:100px;margin-bottom:1rem}
+        .tag-infra{color:var(--accent);background:var(--accent-glow)}
+        .tag-secu,.tag-sécurité{color:var(--green);background:rgba(52,211,153,.12)}
+        .tag-reseau,.tag-réseau{color:var(--orange);background:rgba(251,146,60,.12)}
+        .tag-systeme,.tag-système{color:#c084fc;background:rgba(192,132,252,.12)}
+        .pc h3{font-size:1.3rem;font-weight:700;margin-bottom:.75rem;transition:color .2s}
+        .pc p{color:var(--text-dim);font-size:.9rem}
+        .pc-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.2rem;font-size:.78rem;font-weight:600;color:var(--accent);letter-spacing:.5px}
+
+        /* ── MODAL ── */
+        .mo{position:fixed;inset:0;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);z-index:2000;display:none;justify-content:center;align-items:center;padding:2rem}
+        .mo.on{display:flex}
+        .mo-box{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;max-width:720px;width:100%;max-height:85vh;overflow-y:auto;padding:3rem;position:relative}
+        .mo-close{position:absolute;top:1.2rem;right:1.2rem;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s}
+        .mo-close:hover{border-color:var(--accent)}
+        .mo-box h2{font-size:2rem;font-weight:900;margin-bottom:.5rem}
+        .mo-div{width:40px;height:3px;background:var(--accent);border-radius:3px;margin:1rem 0 1.5rem}
+        .mo-body{color:var(--text-dim);font-size:1rem;line-height:1.8}
+        .mo-body strong{color:var(--text)}
+        .mo-body ul{margin:.5rem 0;padding-left:1.5rem}
+        .mo-body li{margin-bottom:.3rem}
+
+        /* ── VEILLE ── */
+        #veille{background:linear-gradient(180deg,#080c14,var(--bg))}
+        .vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+        .vc{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:border-color .3s}
+        .vc:hover{border-color:var(--accent)}
+        .vc h3{font-size:1.1rem;font-weight:700;margin-bottom:.6rem}
+        .vc p{color:var(--text-dim);font-size:.85rem;margin-bottom:1rem}
+        .vc-src{display:inline-block;font-family:var(--mono);font-size:.7rem;color:var(--accent);background:var(--accent-glow);padding:.3rem .8rem;border-radius:100px}
+
+        /* ── CONTACT ── */
+        #contact{background:var(--bg)}
+        .cw{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+        .ci h3{font-size:1.5rem;font-weight:700;margin-bottom:1rem}
+        .ci p{color:var(--text-dim);margin-bottom:2rem}
+        .cd{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;color:var(--text-dim);font-size:.9rem}
+        .cd .ic{width:36px;height:36px;border-radius:8px;background:var(--accent-glow);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+        .cf{display:flex;flex-direction:column;gap:1rem}
+        .cf input,.cf textarea{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;color:var(--text);font-family:var(--font);font-size:.9rem;transition:border-color .2s;outline:0;width:100%}
+        .cf input:focus,.cf textarea:focus{border-color:var(--accent)}
+        .cf textarea{min-height:140px;resize:vertical}
+        .cf button{background:var(--accent);color:var(--bg);border:0;border-radius:10px;padding:.9rem 2rem;font-family:var(--font);font-size:.9rem;font-weight:700;cursor:pointer;transition:opacity .2s;letter-spacing:.5px}
+        .cf button:hover{opacity:.85}
+
+        /* ── FOOTER ── */
+        footer{text-align:center;padding:2rem;color:var(--text-dim);font-size:.75rem;border-top:1px solid var(--border);font-family:var(--mono)}
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:768px){
+            .nav-links{display:none}
+            .burger{display:flex}
+            .hero h1{letter-spacing:-1px}
+            .cw{grid-template-columns:1fr}
+            .pg,.vg{grid-template-columns:1fr}
+            .st{font-size:2rem}
+            .mo-box{padding:2rem 1.5rem}
         }
     </style>
 </head>
 <body>
 
-    <!-- ═══════ NAVIGATION ═══════ -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-inner">
-            <div class="nav-logo">
-                <span class="accent">&gt;_</span> F.CAMON
-            </div>
-            <div class="nav-links">
-                <a href="#parcours">Parcours</a>
-                <a href="#projets">Projets</a>
-                <a href="#veille">Veille</a>
-                <a href="#contact" class="nav-contact-btn">Contact</a>
-            </div>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
+<!-- NAV -->
+<nav class="nav" id="navbar">
+    <div class="nav-inner">
+        <div class="nav-logo"><span class="a">&gt;_</span> <span id="nav-name">Portfolio</span></div>
+        <div class="nav-links">
+            <a href="#parcours">Parcours</a>
+            <a href="#projets">Projets</a>
+            <a href="#veille">Veille</a>
+            <a href="#contact" class="nav-cta">Contact</a>
         </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#parcours" onclick="closeMobile()">Parcours</a>
-        <a href="#projets" onclick="closeMobile()">Projets</a>
-        <a href="#veille" onclick="closeMobile()">Veille</a>
-        <a href="#contact" onclick="closeMobile()">Contact</a>
+        <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="#parcours" onclick="closeMob()">Parcours</a>
+    <a href="#projets" onclick="closeMob()">Projets</a>
+    <a href="#veille" onclick="closeMob()">Veille</a>
+    <a href="#contact" onclick="closeMob()">Contact</a>
+</div>
 
-    <!-- ═══════ HERO ═══════ -->
-    <header class="hero" id="accueil">
-        <div data-aos="fade-up" data-aos-duration="1000">
-            <span class="hero-badge">● BTS SIO — Option SISR</span>
-        </div>
-        <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-            François<br><span class="line2">CAMON</span>
-        </h1>
-        <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-            Administrateur Systèmes &amp; Réseaux en formation. Passionné par l'infrastructure, la virtualisation et la cybersécurité.
-        </p>
-        <div class="hero-scroll">
-            <span>Découvrir</span>
-            <span>↓</span>
-        </div>
-    </header>
+<!-- HERO -->
+<header class="hero" id="accueil">
+    <div data-aos="fade-up" data-aos-duration="1000">
+        <span class="hero-badge" id="hero-badge">● BTS SIO — Option SISR</span>
+    </div>
+    <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100" id="hero-name">
+        Portfolio<br><span class="hl">SISR</span>
+    </h1>
+    <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" id="hero-desc">
+        Chargement...
+    </p>
+    <div class="hero-scroll"><span>Découvrir</span><span>↓</span></div>
+</header>
 
-    <!-- ═══════ PARCOURS ═══════ -->
-    <section id="parcours">
-        <div class="section-container">
-            <div class="section-header" data-aos="fade-right">
-                <div class="section-label">// Parcours</div>
-                <h2 class="section-title">Mon parcours de formation</h2>
+<!-- PARCOURS -->
+<section id="parcours">
+    <div class="sc">
+        <div class="sh" data-aos="fade-right"><div class="sl">// Parcours</div><h2 class="st">Mon parcours de formation</h2></div>
+        <div class="tl" id="parcours-list"></div>
+    </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+    <div class="sc">
+        <div class="sh" data-aos="fade-right"><div class="sl">// Réalisations</div><h2 class="st">Projets techniques</h2></div>
+        <div class="pg" id="projets-list"></div>
+    </div>
+</section>
+
+<!-- MODAL -->
+<div class="mo" id="modal">
+    <div class="mo-box">
+        <button class="mo-close" onclick="closeModal()">✕</button>
+        <div id="modal-tag"></div>
+        <h2 id="modal-title"></h2>
+        <div class="mo-div"></div>
+        <div class="mo-body" id="modal-body"></div>
+    </div>
+</div>
+
+<!-- VEILLE -->
+<section id="veille">
+    <div class="sc">
+        <div class="sh" data-aos="fade-right"><div class="sl">// Veille informatique</div><h2 class="st">Veille technologique</h2></div>
+        <div class="vg" id="veille-list"></div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="sc">
+        <div class="sh" data-aos="fade-right"><div class="sl">// Contact</div><h2 class="st">Me contacter</h2></div>
+        <div class="cw">
+            <div class="ci" data-aos="fade-up">
+                <h3>Restons en contact</h3>
+                <p>N'hésitez pas à me contacter pour toute question relative à mon parcours ou à mes projets.</p>
+                <div class="cd"><div class="ic">📧</div><span id="contact-email">—</span></div>
+                <div class="cd"><div class="ic">📍</div><span id="contact-loc">—</span></div>
+                <div class="cd" id="contact-li-wrap" style="display:none"><div class="ic">💼</div><a id="contact-li" href="#" target="_blank" style="color:var(--accent)">LinkedIn</a></div>
             </div>
-
-            <div class="timeline">
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-year">2024 — 2026</div>
-                    <div class="timeline-place">BTS SIO option SISR</div>
-                    <div class="timeline-desc">
-                        Solutions d'Infrastructure, Systèmes et Réseaux. 
-                        Administration serveurs, virtualisation, sécurité réseau, scripting.
-                    </div>
+            <div data-aos="fade-up" data-aos-delay="100">
+                <div class="cf" id="contactForm">
+                    <input type="text" id="f-name" placeholder="Votre nom" required>
+                    <input type="email" id="f-email" placeholder="Votre email" required>
+                    <textarea id="f-msg" placeholder="Votre message..." required></textarea>
+                    <button type="button" onclick="sendForm()">Envoyer le message</button>
+                    <p id="f-status" style="font-size:.85rem;color:var(--green);display:none"></p>
                 </div>
-
-                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="timeline-year">2025 (Stage)</div>
-                    <div class="timeline-place">Stage en entreprise</div>
-                    <div class="timeline-desc">
-                        <!-- REMPLACE par ton vrai stage -->
-                        Maintenance parc informatique, déploiement postes, support utilisateurs.
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="timeline-year">2022 — 2024</div>
-                    <div class="timeline-place">Baccalauréat</div>
-                    <div class="timeline-desc">
-                        <!-- REMPLACE par ton vrai bac -->
-                        Obtention du baccalauréat, orientation vers l'informatique et les réseaux.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════ PROJETS ═══════ -->
-    <section id="projets">
-        <div class="section-container">
-            <div class="section-header" data-aos="fade-right">
-                <div class="section-label">// Réalisations</div>
-                <h2 class="section-title">Projets techniques</h2>
-            </div>
-
-            <div class="projects-grid">
-
-                <div class="project-card" data-aos="fade-up"
-                     onclick="openModal('modal-proxmox')">
-                    <span class="project-tag tag-infra">Infrastructure</span>
-                    <h3>Cluster Proxmox VE</h3>
-                    <p>Mise en place d'un environnement de virtualisation haute disponibilité avec stockage partagé NFS.</p>
-                    <span class="project-link">Voir le dossier →</span>
-                </div>
-
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100"
-                     onclick="openModal('modal-pfsense')">
-                    <span class="project-tag tag-secu">Sécurité</span>
-                    <h3>Firewall pfSense</h3>
-                    <p>Configuration d'un pare-feu avec VPN IPSec, filtrage de contenu et portail captif.</p>
-                    <span class="project-link">Voir le dossier →</span>
-                </div>
-
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200"
-                     onclick="openModal('modal-vlan')">
-                    <span class="project-tag tag-reseau">Réseau</span>
-                    <h3>Segmentation VLAN</h3>
-                    <p>Configuration de VLANs et ACLs sur switches Cisco pour isoler les flux réseau.</p>
-                    <span class="project-link">Voir le dossier →</span>
-                </div>
-
-                <div class="project-card" data-aos="fade-up" data-aos-delay="300"
-                     onclick="openModal('modal-ad')">
-                    <span class="project-tag tag-infra">Système</span>
-                    <h3>Active Directory</h3>
-                    <p>Déploiement d'un domaine AD avec GPO, DHCP, DNS et gestion centralisée des utilisateurs.</p>
-                    <span class="project-link">Voir le dossier →</span>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════ MODALES PROJETS ═══════ -->
-    <div class="modal-overlay" id="modal-proxmox">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeModal('modal-proxmox')">✕</button>
-            <span class="project-tag tag-infra" style="margin-bottom:1rem">Infrastructure</span>
-            <h2>Cluster Proxmox VE</h2>
-            <div class="modal-divider"></div>
-            <div class="content">
-                <p><strong>Contexte :</strong> Projet réalisé en TP dans le cadre du BTS SIO SISR.</p>
-                <p><strong>Objectif :</strong> Mettre en place un environnement de virtualisation haute disponibilité pour héberger plusieurs machines virtuelles de production.</p>
-                <p><strong>Technologies utilisées :</strong></p>
-                <ul>
-                    <li>Proxmox VE 8.x</li>
-                    <li>Stockage partagé NFS (Debian)</li>
-                    <li>Cluster à 2 nœuds avec migration à chaud</li>
-                    <li>Sauvegarde automatisée (PBS)</li>
-                </ul>
-                <p><strong>Résultat :</strong> Infrastructure fonctionnelle permettant la migration de VM sans interruption de service.</p>
-                <!-- Ajoute ici tes captures d'écran : <img src="img/proxmox-screenshot.png" alt="..."> -->
             </div>
         </div>
     </div>
+</section>
 
-    <div class="modal-overlay" id="modal-pfsense">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeModal('modal-pfsense')">✕</button>
-            <span class="project-tag tag-secu" style="margin-bottom:1rem">Sécurité</span>
-            <h2>Firewall pfSense</h2>
-            <div class="modal-divider"></div>
-            <div class="content">
-                <p><strong>Contexte :</strong> Sécurisation du réseau d'un labo technique.</p>
-                <p><strong>Objectif :</strong> Déployer un pare-feu open source pour filtrer le trafic, créer des tunnels VPN et mettre en place un portail captif.</p>
-                <p><strong>Technologies utilisées :</strong></p>
-                <ul>
-                    <li>pfSense CE</li>
-                    <li>VPN IPSec site à site</li>
-                    <li>Squid + SquidGuard (filtrage URL)</li>
-                    <li>Portail captif avec authentification RADIUS</li>
-                </ul>
-                <p><strong>Résultat :</strong> Réseau sécurisé avec séparation des flux et accès contrôlé.</p>
-            </div>
-        </div>
-    </div>
+<footer>
+    <p id="footer-text">© 2026 — Portfolio BTS SIO SISR — Hébergé sur GitHub Pages</p>
+</footer>
 
-    <div class="modal-overlay" id="modal-vlan">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeModal('modal-vlan')">✕</button>
-            <span class="project-tag tag-reseau" style="margin-bottom:1rem">Réseau</span>
-            <h2>Segmentation VLAN</h2>
-            <div class="modal-divider"></div>
-            <div class="content">
-                <p><strong>Contexte :</strong> Projet de TP réseau dans le cadre du module SI2.</p>
-                <p><strong>Objectif :</strong> Segmenter un réseau d'entreprise en plusieurs VLANs pour isoler les départements et sécuriser les communications.</p>
-                <p><strong>Technologies utilisées :</strong></p>
-                <ul>
-                    <li>Switches Cisco Catalyst (Packet Tracer / matériel réel)</li>
-                    <li>VLANs, trunking 802.1Q</li>
-                    <li>Routage inter-VLAN (Router on a stick)</li>
-                    <li>ACLs pour restriction de flux</li>
-                </ul>
-                <p><strong>Résultat :</strong> Réseau segmenté avec politique d'accès entre les départements.</p>
-            </div>
-        </div>
-    </div>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+AOS.init({duration:700,once:true,offset:80});
 
-    <div class="modal-overlay" id="modal-ad">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeModal('modal-ad')">✕</button>
-            <span class="project-tag tag-infra" style="margin-bottom:1rem">Système</span>
-            <h2>Active Directory</h2>
-            <div class="modal-divider"></div>
-            <div class="content">
-                <p><strong>Contexte :</strong> Projet de TP système dans le cadre du module SI1.</p>
-                <p><strong>Objectif :</strong> Installer et configurer un domaine Active Directory complet pour gérer les utilisateurs, postes et stratégies de sécurité.</p>
-                <p><strong>Technologies utilisées :</strong></p>
-                <ul>
-                    <li>Windows Server 2022</li>
-                    <li>AD DS, DNS, DHCP</li>
-                    <li>GPO (stratégies de groupe)</li>
-                    <li>Gestion des OU et profils itinérants</li>
-                </ul>
-                <p><strong>Résultat :</strong> Domaine fonctionnel avec gestion centralisée de 30+ comptes utilisateurs.</p>
-            </div>
-        </div>
-    </div>
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',scrollY>50)});
 
-    <!-- ═══════ VEILLE TECHNOLOGIQUE ═══════ -->
-    <section id="veille">
-        <div class="section-container">
-            <div class="section-header" data-aos="fade-right">
-                <div class="section-label">// Veille informatique</div>
-                <h2 class="section-title">Veille technologique</h2>
-            </div>
+/* ── MOBILE MENU ── */
+const burger=document.getElementById('burger'),mob=document.getElementById('mobMenu');
+burger.addEventListener('click',()=>{burger.classList.toggle('on');mob.classList.toggle('on');document.body.style.overflow=mob.classList.contains('on')?'hidden':''});
+function closeMob(){burger.classList.remove('on');mob.classList.remove('on');document.body.style.overflow=''}
 
-            <div class="veille-grid">
+/* ── MODAL ── */
+function openModal(proj){
+    const m=document.getElementById('modal');
+    const cat=proj.category.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    document.getElementById('modal-tag').innerHTML='<span class="tag tag-'+cat+'">'+proj.category+'</span>';
+    document.getElementById('modal-title').textContent=proj.title;
+    document.getElementById('modal-body').innerHTML=proj.content;
+    m.classList.add('on');document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modal').classList.remove('on');document.body.style.overflow=''}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
-                <div class="veille-card" data-aos="fade-up">
-                    <h3>Zero Trust Architecture</h3>
-                    <p>Le modèle de sécurité Zero Trust remet en question la confiance implicite dans les réseaux d'entreprise. Chaque requête est authentifiée et autorisée, indépendamment de sa source.</p>
-                    <a href="#" class="veille-source" target="_blank">Lire la source</a>
-                </div>
+/* ── CONTACT FORM ── */
+function sendForm(){
+    const n=document.getElementById('f-name').value.trim(),e=document.getElementById('f-email').value.trim(),m=document.getElementById('f-msg').value.trim(),s=document.getElementById('f-status');
+    if(!n||!e||!m){s.textContent='Merci de remplir tous les champs.';s.style.color='var(--red)';s.style.display='block';return}
+    s.textContent='✓ Envoyé ! (Configure Formspree pour activer l\'envoi réel)';s.style.color='var(--green)';s.style.display='block';
+}
 
-                <div class="veille-card" data-aos="fade-up" data-aos-delay="100">
-                    <h3>Conteneurisation (Docker)</h3>
-                    <p>Docker et Kubernetes transforment le déploiement des applications en isolant les services dans des conteneurs légers et portables.</p>
-                    <a href="#" class="veille-source" target="_blank">Lire la source</a>
-                </div>
+/* ── RENDER DATA ── */
+let DATA=null;
 
-                <div class="veille-card" data-aos="fade-up" data-aos-delay="200">
-                    <h3>IA et Cybersécurité</h3>
-                    <p>L'intelligence artificielle est de plus en plus utilisée pour détecter les menaces en temps réel et automatiser les réponses aux incidents de sécurité.</p>
-                    <a href="#" class="veille-source" target="_blank">Lire la source</a>
-                </div>
+function renderSite(d){
+    DATA=d;
+    const s=d.site;
+    // Hero
+    const names=s.name.split(' ');
+    document.getElementById('nav-name').textContent=names[0][0]+'.'+names[names.length-1].toUpperCase();
+    document.getElementById('hero-badge').textContent='● '+s.title;
+    document.getElementById('hero-name').innerHTML=names[0]+'<br><span class="hl">'+names.slice(1).join(' ').toUpperCase()+'</span>';
+    document.getElementById('hero-desc').textContent=s.description;
+    document.title=s.name+' — '+s.title;
+    // Contact
+    document.getElementById('contact-email').textContent=s.email;
+    document.getElementById('contact-loc').textContent=s.location;
+    if(s.linkedin){document.getElementById('contact-li').href=s.linkedin;document.getElementById('contact-li-wrap').style.display='flex'}
+    document.getElementById('footer-text').textContent='© 2026 '+s.name+' — Portfolio BTS SIO SISR — GitHub Pages';
 
-            </div>
-        </div>
-    </section>
+    // Parcours
+    const pl=document.getElementById('parcours-list');
+    pl.innerHTML=d.parcours.map((p,i)=>`
+        <div class="tl-item" data-aos="fade-up" data-aos-delay="${i*100}">
+            <div class="tl-year">${esc(p.year)}</div>
+            <div class="tl-place">${esc(p.place)}</div>
+            <div class="tl-desc">${esc(p.desc)}</div>
+        </div>`).join('');
 
-    <!-- ═══════ CONTACT ═══════ -->
-    <section id="contact">
-        <div class="section-container">
-            <div class="section-header" data-aos="fade-right">
-                <div class="section-label">// Contact</div>
-                <h2 class="section-title">Me contacter</h2>
-            </div>
+    // Projets
+    const pjl=document.getElementById('projets-list');
+    pjl.innerHTML=d.projets.map((p,i)=>{
+        const cat=p.category.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+        return `<div class="pc" data-aos="fade-up" data-aos-delay="${i*100}" onclick='openModal(DATA.projets[${i}])'>
+            <span class="tag tag-${cat}">${esc(p.category)}</span>
+            <h3>${esc(p.title)}</h3>
+            <p>${esc(p.description)}</p>
+            <span class="pc-link">Voir le dossier →</span>
+        </div>`}).join('');
 
-            <div class="contact-wrapper">
-                <div class="contact-info" data-aos="fade-up">
-                    <h3>Restons en contact</h3>
-                    <p>N'hésitez pas à me contacter pour toute question relative à mon parcours ou à mes projets.</p>
-                    <div class="contact-detail">
-                        <div class="icon">📧</div>
-                        <span>votre.email@example.com</span>
-                    </div>
-                    <div class="contact-detail">
-                        <div class="icon">📍</div>
-                        <span>Votre ville, France</span>
-                    </div>
-                    <div class="contact-detail">
-                        <div class="icon">💼</div>
-                        <a href="https://www.linkedin.com/" target="_blank" style="color:var(--accent)">LinkedIn</a>
-                    </div>
-                </div>
+    // Veille
+    const vl=document.getElementById('veille-list');
+    vl.innerHTML=d.veille.map((v,i)=>`
+        <div class="vc" data-aos="fade-up" data-aos-delay="${i*100}">
+            <h3>${esc(v.title)}</h3>
+            <p>${esc(v.summary)}</p>
+            ${v.url?`<a href="${esc(v.url)}" target="_blank" class="vc-src">Lire la source</a>`:'<span class="vc-src" style="opacity:.4">Source à ajouter</span>'}
+        </div>`).join('');
 
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <!-- REMPLACE l'action par ton lien Formspree : https://formspree.io -->
-                    <div class="contact-form" id="contactForm">
-                        <input type="text" id="form-name" placeholder="Votre nom" required>
-                        <input type="email" id="form-email" placeholder="Votre email" required>
-                        <textarea id="form-message" placeholder="Votre message..." required></textarea>
-                        <button type="button" onclick="sendForm()">Envoyer le message</button>
-                        <p id="form-status" style="font-size:0.85rem; color:var(--green); display:none;"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    // Refresh AOS for dynamic content
+    setTimeout(()=>AOS.refresh(),100);
+}
 
-    <!-- ═══════ FOOTER ═══════ -->
-    <footer>
-        <p>© 2026 François CAMON — Portfolio BTS SIO SISR — Hébergé sur GitHub / Netlify</p>
-    </footer>
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 
-    <!-- ═══════ NETLIFY IDENTITY (pour l'admin CMS) ═══════ -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-    <!-- ═══════ AOS ANIMATIONS ═══════ -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-    <script>
-        /* ═══════════════════════════════════════════
-           INIT
-           ═══════════════════════════════════════════ */
-        AOS.init({ duration: 700, once: true, offset: 80 });
-
-        /* ═══════════════════════════════════════════
-           NAVBAR SCROLL EFFECT
-           ═══════════════════════════════════════════ */
-        window.addEventListener('scroll', () => {
-            document.getElementById('navbar')
-                .classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        /* ═══════════════════════════════════════════
-           MOBILE MENU
-           ═══════════════════════════════════════════ */
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow =
-                mobileMenu.classList.contains('active') ? 'hidden' : '';
-        });
-
-        function closeMobile() {
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        /* ═══════════════════════════════════════════
-           PROJECT MODALS
-           ═══════════════════════════════════════════ */
-        function openModal(id) {
-            document.getElementById(id).classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Close modal on background click
-        document.querySelectorAll('.modal-overlay').forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal-overlay.active').forEach(m => {
-                    m.classList.remove('active');
-                });
-                document.body.style.overflow = '';
-            }
-        });
-
-        /* ═══════════════════════════════════════════
-           CONTACT FORM (basic — replace with Formspree)
-           ═══════════════════════════════════════════ */
-        function sendForm() {
-            const name = document.getElementById('form-name').value.trim();
-            const email = document.getElementById('form-email').value.trim();
-            const message = document.getElementById('form-message').value.trim();
-            const status = document.getElementById('form-status');
-
-            if (!name || !email || !message) {
-                status.textContent = 'Merci de remplir tous les champs.';
-                status.style.color = 'var(--red)';
-                status.style.display = 'block';
-                return;
-            }
-
-            // TODO : Remplace cette URL par ton endpoint Formspree
-            // Ex: fetch('https://formspree.io/f/xxxxxxx', { ... })
-            status.textContent = '✓ Message envoyé ! (Configure Formspree pour activer l\'envoi réel)';
-            status.style.color = 'var(--green)';
-            status.style.display = 'block';
-        }
-
-        /* ═══════════════════════════════════════════
-           NETLIFY IDENTITY REDIRECT
-           ═══════════════════════════════════════════ */
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on('init', user => {
-                if (!user) {
-                    window.netlifyIdentity.on('login', () => {
-                        document.location.href = '/admin/';
-                    });
-                }
-            });
-        }
-    </script>
-
+/* ── LOAD DATA ── */
+fetch('data/content.json?v='+Date.now())
+    .then(r=>r.json())
+    .then(renderSite)
+    .catch(()=>{
+        document.getElementById('hero-desc').textContent='Erreur de chargement du contenu.';
+    });
+</script>
 </body>
 </html>
