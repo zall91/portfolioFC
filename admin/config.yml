@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: zall91/portfolioFC # REMPLACE PAR TON REPO
+  name: git-gateway
   branch: main
 
 media_folder: "img" # Où seront stockées tes images
