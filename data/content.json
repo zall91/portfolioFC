@@ -3,9 +3,15 @@
     "name": "François CAMON",
     "title": "BTS SIO — Option SISR",
     "description": "Administrateur Systèmes & Réseaux en formation. Passionné par l'infrastructure, la virtualisation et la cybersécurité.",
-    "email": "francois_camon@example.com",
-    "location": "Carantec, France",
-    "linkedin": "https://www.linkedin.com/in/francois-camon/"
+    "email": "votre.email@example.com",
+    "location": "Votre ville, France",
+    "linkedin": ""
+  },
+  "tags": {
+    "infrastructure": { "label": "Infrastructure", "color": "#38bdf8" },
+    "securite": { "label": "Sécurité", "color": "#34d399" },
+    "reseau": { "label": "Réseau", "color": "#fb923c" },
+    "systeme": { "label": "Système", "color": "#c084fc" }
   },
   "parcours": [
     {
@@ -32,6 +38,7 @@
       "id": "proj1",
       "title": "Cluster Proxmox VE",
       "category": "infrastructure",
+      "image": "",
       "description": "Mise en place d'un environnement de virtualisation haute disponibilité avec stockage partagé NFS.",
       "content": "<p><strong>Contexte :</strong> Projet réalisé en TP dans le cadre du BTS SIO SISR.</p><p><strong>Objectif :</strong> Mettre en place un environnement de virtualisation haute disponibilité.</p><p><strong>Technologies :</strong> Proxmox VE 8.x, stockage NFS, cluster 2 noeuds, migration à chaud, sauvegarde PBS.</p><p><strong>Résultat :</strong> Infrastructure fonctionnelle permettant la migration de VM sans interruption de service.</p>",
       "documents": []
@@ -40,6 +47,7 @@
       "id": "proj2",
       "title": "Firewall pfSense",
       "category": "securite",
+      "image": "",
       "description": "Configuration d'un pare-feu avec VPN IPSec, filtrage de contenu et portail captif.",
       "content": "<p><strong>Contexte :</strong> Sécurisation du réseau d'un labo technique.</p><p><strong>Objectif :</strong> Déployer un pare-feu open source pour filtrer le trafic et créer des tunnels VPN.</p><p><strong>Technologies :</strong> pfSense CE, VPN IPSec, Squid + SquidGuard, portail captif RADIUS.</p><p><strong>Résultat :</strong> Réseau sécurisé avec séparation des flux et accès contrôlé.</p>",
       "documents": []
@@ -48,6 +56,7 @@
       "id": "proj3",
       "title": "Segmentation VLAN",
       "category": "reseau",
+      "image": "",
       "description": "Configuration de VLANs et ACLs sur switches Cisco pour isoler les flux réseau.",
       "content": "<p><strong>Contexte :</strong> Projet de TP réseau dans le cadre du module SI2.</p><p><strong>Objectif :</strong> Segmenter un réseau d'entreprise en plusieurs VLANs.</p><p><strong>Technologies :</strong> Switches Cisco Catalyst, VLANs, trunking 802.1Q, routage inter-VLAN, ACLs.</p><p><strong>Résultat :</strong> Réseau segmenté avec politique d'accès entre les départements.</p>",
       "documents": []
@@ -56,6 +65,7 @@
       "id": "proj4",
       "title": "Active Directory",
       "category": "systeme",
+      "image": "",
       "description": "Déploiement d'un domaine AD avec GPO, DHCP, DNS et gestion centralisée.",
       "content": "<p><strong>Contexte :</strong> Projet de TP système dans le cadre du module SI1.</p><p><strong>Objectif :</strong> Installer et configurer un domaine Active Directory complet.</p><p><strong>Technologies :</strong> Windows Server 2022, AD DS, DNS, DHCP, GPO, profils itinérants.</p><p><strong>Résultat :</strong> Domaine fonctionnel avec gestion centralisée de 30+ comptes utilisateurs.</p>",
       "documents": []

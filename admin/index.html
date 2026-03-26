@@ -16,9 +16,10 @@
         .login-box>p{color:var(--dim);font-size:.9rem;margin-bottom:2rem;line-height:1.6}
         .login-box a{color:var(--accent)}
         label{display:block;font-size:.75rem;font-weight:600;color:var(--dim);margin-bottom:.4rem;letter-spacing:1px;text-transform:uppercase}
-        input[type=text],input[type=email],input[type=url],textarea,select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-family:var(--font);font-size:.9rem;outline:0;margin-bottom:.5rem}
+        input[type=text],input[type=email],input[type=url],input[type=color],textarea,select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-family:var(--font);font-size:.9rem;outline:0;margin-bottom:.5rem}
         input:focus,textarea:focus,select:focus{border-color:var(--accent)}
-        textarea{min-height:100px;resize:vertical;font-family:var(--font)}
+        input[type=color]{height:40px;padding:2px;cursor:pointer}
+        textarea{min-height:100px;resize:vertical}
         select{cursor:pointer}
 
         .help-toggle{background:none;border:none;color:var(--accent);cursor:pointer;font-size:.8rem;margin-bottom:1rem;font-family:var(--font)}
@@ -27,28 +28,24 @@
         .help-box code{background:rgba(56,189,248,.1);color:var(--accent);padding:.1rem .4rem;border-radius:4px;font-family:var(--mono);font-size:.75rem}
 
         .btn{background:var(--accent);color:var(--bg);border:none;border-radius:8px;padding:.7rem 1.2rem;font-family:var(--font);font-size:.85rem;font-weight:700;cursor:pointer;transition:opacity .2s;display:inline-flex;align-items:center;gap:.4rem}
-        .btn:hover{opacity:.85}
-        .btn:disabled{opacity:.4;cursor:not-allowed}
+        .btn:hover{opacity:.85}.btn:disabled{opacity:.4;cursor:not-allowed}
         .btn-full{width:100%;justify-content:center}
-        .btn-danger{background:var(--red)}
-        .btn-green{background:var(--green)}
-        .btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
-        .btn-outline:hover{border-color:var(--accent)}
+        .btn-danger{background:var(--red)}.btn-green{background:var(--green)}
+        .btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}.btn-outline:hover{border-color:var(--accent)}
         .btn-sm{padding:.4rem .8rem;font-size:.75rem}
         .err{color:var(--red);font-size:.85rem;margin-top:.5rem}
-        .ok{color:var(--green);font-size:.85rem;margin-top:.5rem}
 
         .admin{display:none}.admin.on{display:block}
         .topbar{background:var(--card);border-bottom:1px solid var(--border);padding:.8rem 1.5rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:.5rem}
         .topbar h2{font-size:1rem;font-weight:700}.topbar .a{color:var(--accent)}
-        .topbar-right{display:flex;gap:.5rem;align-items:center}
+        .topbar-right{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
         .topbar .status{font-family:var(--mono);font-size:.65rem;color:var(--green);margin-right:.5rem}
 
         .layout{display:flex;min-height:calc(100vh - 56px)}
         .sidebar{width:220px;background:var(--card);border-right:1px solid var(--border);padding:1rem 0;flex-shrink:0}
         .sidebar a{display:block;padding:.65rem 1.5rem;font-size:.85rem;font-weight:600;color:var(--dim);cursor:pointer;transition:all .15s;border-left:3px solid transparent}
         .sidebar a:hover,.sidebar a.act{color:var(--accent);background:rgba(56,189,248,.05);border-left-color:var(--accent)}
-        .main{flex:1;padding:2rem;max-width:900px;overflow-y:auto}
+        .main{flex:1;padding:2rem;max-width:920px;overflow-y:auto}
 
         .sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
         .sec-head h3{font-size:1.4rem;font-weight:900}
@@ -66,27 +63,44 @@
         .field{margin-bottom:.8rem}
         .field small{color:var(--dim);font-size:.7rem;display:block;margin-top:.2rem}
         .editor-actions{display:flex;gap:.5rem;margin-top:1.2rem;flex-wrap:wrap}
+        .field-row{display:flex;gap:.8rem;align-items:flex-end}
+        .field-row .field{flex:1}
 
-        /* File upload */
+        /* Rich text editor */
+        .rte-toolbar{display:flex;gap:2px;flex-wrap:wrap;padding:.4rem;background:var(--bg);border:1px solid var(--border);border-bottom:0;border-radius:8px 8px 0 0}
+        .rte-toolbar button{background:transparent;border:1px solid transparent;border-radius:4px;color:var(--dim);cursor:pointer;padding:.35rem .55rem;font-size:.85rem;font-family:var(--font);transition:all .15s;line-height:1}
+        .rte-toolbar button:hover{background:rgba(56,189,248,.1);color:var(--accent);border-color:var(--border)}
+        .rte-toolbar .sep{width:1px;background:var(--border);margin:0 4px;align-self:stretch}
+        .rte-area{background:var(--bg);border:1px solid var(--border);border-radius:0 0 8px 8px;padding:1rem;min-height:180px;color:var(--text);font-family:var(--font);font-size:.9rem;line-height:1.7;outline:0;overflow-y:auto;max-height:400px}
+        .rte-area:focus{border-color:var(--accent)}
+        .rte-area blockquote{border-left:3px solid var(--accent);padding-left:.8rem;margin:.5rem 0;color:var(--accent)}
+        .rte-area img{max-width:100%;border-radius:4px;margin:.5rem 0}
+        .rte-area ul,.rte-area ol{padding-left:1.5rem;margin:.5rem 0}
+
+        /* Upload */
         .upload-zone{border:2px dashed var(--border);border-radius:10px;padding:1.5rem;text-align:center;cursor:pointer;transition:border-color .2s;margin-top:.5rem}
-        .upload-zone:hover{border-color:var(--accent)}
+        .upload-zone:hover,.upload-zone.drag{border-color:var(--accent)}
         .upload-zone p{color:var(--dim);font-size:.8rem}
         .upload-zone input{display:none}
         .upload-progress{font-family:var(--mono);font-size:.75rem;color:var(--accent);margin-top:.5rem}
-
-        .doc-list-admin{margin-top:.8rem}
         .doc-row{display:flex;align-items:center;gap:.5rem;padding:.5rem .6rem;background:var(--bg);border:1px solid var(--border);border-radius:6px;margin-bottom:.4rem;font-size:.8rem}
         .doc-row .name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
-        .doc-row .size{color:var(--dim);font-size:.7rem;flex-shrink:0}
+        .doc-row .sz{color:var(--dim);font-size:.7rem;flex-shrink:0}
 
-        /* Delay notice */
+        /* Image preview */
+        .img-preview{width:64px;height:64px;border-radius:8px;object-fit:contain;background:rgba(255,255,255,.05);border:1px solid var(--border)}
+        .img-upload-row{display:flex;align-items:center;gap:1rem;margin-bottom:.5rem}
+
+        /* Tags manager */
+        .tag-row{display:flex;align-items:center;gap:.6rem;padding:.5rem .6rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;margin-bottom:.5rem}
+        .tag-row .swatch{width:20px;height:20px;border-radius:4px;flex-shrink:0;border:1px solid var(--border)}
+        .tag-row .tlabel{flex:1;font-weight:600;font-size:.9rem}
+        .tag-row .tkey{font-family:var(--mono);font-size:.7rem;color:var(--dim)}
+
         .notice{background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:8px;padding:.8rem 1rem;font-size:.8rem;color:var(--accent);margin-bottom:1.5rem;line-height:1.5}
-
         .toast{position:fixed;bottom:2rem;right:2rem;padding:.8rem 1.5rem;border-radius:10px;font-weight:700;font-size:.85rem;z-index:9999;display:none;box-shadow:0 4px 20px rgba(0,0,0,.4)}
-        .toast.show{display:block;animation:fadeIn .3s}
-        .toast-ok{background:var(--green);color:var(--bg)}
-        .toast-err{background:var(--red);color:#fff}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        .toast.show{display:block;animation:fi .3s}.toast-ok{background:var(--green);color:var(--bg)}.toast-err{background:var(--red);color:#fff}
+        @keyframes fi{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
         @media(max-width:768px){.sidebar{display:none}.main{padding:1rem}}
     </style>
@@ -107,9 +121,9 @@
             1. Va sur <a href="https://github.com/settings/tokens?type=beta" target="_blank">github.com/settings/tokens</a><br>
             2. <code>Generate new token</code> → <code>Fine-grained</code><br>
             3. Nom : <code>admin-portfolio</code> — Expiration : 90 jours<br>
-            4. Repository access → <code>Only select repositories</code> → ton dépôt<br>
+            4. Repository access → ton dépôt uniquement<br>
             5. Permissions → Contents → <strong>Read and write</strong><br>
-            6. Copie le token ici. Il reste dans ton navigateur uniquement (sessionStorage).
+            6. Copie le token ici (il reste dans ton navigateur uniquement).
         </div>
         <button class="btn btn-full" onclick="doLogin()">Se connecter</button>
         <p class="err" id="login-err" style="display:none"></p>
@@ -121,7 +135,7 @@
     <div class="topbar">
         <h2>⚡ <span class="a">Admin</span> Portfolio</h2>
         <div class="topbar-right">
-            <span class="status" id="statusText">● Connecté</span>
+            <span class="status">● Connecté</span>
             <a href="../" target="_blank" class="btn btn-sm btn-outline">Voir le site ↗</a>
             <button class="btn btn-sm btn-danger" onclick="doLogout()">Déconnexion</button>
         </div>
@@ -131,301 +145,286 @@
         <div class="main" id="mainContent"></div>
     </div>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <script>
-/* ══════════════════════════════════════
-   STATE
-   ══════════════════════════════════════ */
+/* ══════════════════ STATE ══════════════════ */
 let TOKEN='',REPO='',DATA=null,SHA='',currentTab='site';
 const TABS=[
     {id:'site',icon:'⚙️',label:'Infos du site'},
+    {id:'tags',icon:'🏷️',label:'Étiquettes'},
     {id:'parcours',icon:'🎓',label:'Parcours'},
     {id:'projets',icon:'🔧',label:'Projets'},
     {id:'veille',icon:'📡',label:'Veille'}
 ];
 
-/* ══════════════════════════════════════
-   UTF-8 safe base64
-   ══════════════════════════════════════ */
-function b64encode(str){
-    return btoa(Array.from(new TextEncoder().encode(str),b=>String.fromCharCode(b)).join(''));
-}
-function b64decode(b64){
-    const bin=atob(b64);
-    const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));
-    return new TextDecoder().decode(bytes);
-}
+/* ══════════════════ UTF-8 BASE64 ══════════════════ */
+function b64enc(s){return btoa(Array.from(new TextEncoder().encode(s),b=>String.fromCharCode(b)).join(''))}
+function b64dec(b){return new TextDecoder().decode(Uint8Array.from(atob(b),c=>c.charCodeAt(0)))}
 
-/* ══════════════════════════════════════
-   LOGIN
-   ══════════════════════════════════════ */
+/* ══════════════════ LOGIN ══════════════════ */
 async function doLogin(){
-    const err=document.getElementById('login-err');
-    err.style.display='none';
+    const err=document.getElementById('login-err');err.style.display='none';
     TOKEN=document.getElementById('inp-token').value.trim();
     REPO=document.getElementById('inp-repo').value.trim();
     if(!TOKEN||!REPO){err.textContent='Remplis les deux champs.';err.style.display='block';return}
     try{
-        const r=await ghGet('');
-        if(!r.ok) throw new Error('Dépôt introuvable ou token invalide ('+r.status+')');
+        const r=await ghGet('');if(!r.ok)throw new Error('Dépôt introuvable ou token invalide');
         await loadData();
-        sessionStorage.setItem('gh_token',TOKEN);
-        sessionStorage.setItem('gh_repo',REPO);
+        sessionStorage.setItem('gh_token',TOKEN);sessionStorage.setItem('gh_repo',REPO);
         document.getElementById('loginScreen').style.display='none';
         document.getElementById('adminPanel').classList.add('on');
-        renderSidebar();
-        switchTab('site');
+        renderSidebar();switchTab('site');
     }catch(e){err.textContent=e.message;err.style.display='block'}
 }
 function doLogout(){sessionStorage.clear();TOKEN='';DATA=null;SHA='';document.getElementById('adminPanel').classList.remove('on');document.getElementById('loginScreen').style.display='flex'}
-window.addEventListener('DOMContentLoaded',()=>{
-    const t=sessionStorage.getItem('gh_token'),r=sessionStorage.getItem('gh_repo');
-    if(t&&r){document.getElementById('inp-token').value=t;document.getElementById('inp-repo').value=r;doLogin()}
-});
+window.addEventListener('DOMContentLoaded',()=>{const t=sessionStorage.getItem('gh_token'),r=sessionStorage.getItem('gh_repo');if(t&&r){document.getElementById('inp-token').value=t;document.getElementById('inp-repo').value=r;doLogin()}});
 
-/* ══════════════════════════════════════
-   GITHUB API
-   ══════════════════════════════════════ */
-function ghGet(path){return fetch('https://api.github.com/repos/'+REPO+path,{headers:{'Authorization':'Bearer '+TOKEN,'Accept':'application/vnd.github+json'}})}
-
+/* ══════════════════ GITHUB API ══════════════════ */
+function ghGet(p){return fetch('https://api.github.com/repos/'+REPO+p,{headers:{'Authorization':'Bearer '+TOKEN,'Accept':'application/vnd.github+json'}})}
 async function loadData(){
-    const r=await ghGet('/contents/data/content.json');
-    if(!r.ok) throw new Error('data/content.json introuvable.');
-    const j=await r.json();
-    SHA=j.sha;
-    DATA=JSON.parse(b64decode(j.content.replace(/\n/g,'')));
+    const r=await ghGet('/contents/data/content.json');if(!r.ok)throw new Error('data/content.json introuvable');
+    const j=await r.json();SHA=j.sha;DATA=JSON.parse(b64dec(j.content.replace(/\n/g,'')));
+    if(!DATA.tags)DATA.tags={};
 }
-
 async function saveData(){
-    const body=JSON.stringify({message:'[Admin] Mise à jour',content:b64encode(JSON.stringify(DATA,null,2)),sha:SHA});
+    const body=JSON.stringify({message:'[Admin] Mise à jour',content:b64enc(JSON.stringify(DATA,null,2)),sha:SHA});
     const r=await fetch('https://api.github.com/repos/'+REPO+'/contents/data/content.json',{method:'PUT',headers:{'Authorization':'Bearer '+TOKEN,'Content-Type':'application/json'},body});
-    if(!r.ok){const e=await r.json();throw new Error(e.message||'Erreur sauvegarde')}
+    if(!r.ok){const e=await r.json();throw new Error(e.message||'Erreur')}
     SHA=(await r.json()).content.sha;
 }
-
 async function uploadFile(file,folder){
-    return new Promise((resolve,reject)=>{
+    return new Promise((res,rej)=>{
         const reader=new FileReader();
         reader.onload=async()=>{
             const b64=reader.result.split(',')[1];
             const path=folder+'/'+Date.now()+'_'+file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
             try{
-                const r=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+path,{
-                    method:'PUT',
-                    headers:{'Authorization':'Bearer '+TOKEN,'Content-Type':'application/json'},
-                    body:JSON.stringify({message:'[Admin] Upload '+file.name,content:b64})
-                });
-                if(!r.ok) throw new Error('Upload échoué');
-                const j=await r.json();
-                resolve({name:file.name,url:j.content.download_url,path:path,size:file.size});
-            }catch(e){reject(e)}
-        };
-        reader.onerror=()=>reject(new Error('Lecture fichier échouée'));
-        reader.readAsDataURL(file);
+                const r=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+path,{method:'PUT',headers:{'Authorization':'Bearer '+TOKEN,'Content-Type':'application/json'},body:JSON.stringify({message:'[Admin] Upload '+file.name,content:b64})});
+                if(!r.ok)throw new Error('Upload échoué');
+                const j=await r.json();res({name:file.name,url:j.content.download_url,path,size:file.size});
+            }catch(e){rej(e)}
+        };reader.onerror=()=>rej(new Error('Lecture échouée'));reader.readAsDataURL(file);
     });
 }
 
-/* ══════════════════════════════════════
-   SIDEBAR
-   ══════════════════════════════════════ */
-function renderSidebar(){
-    document.getElementById('sidebar').innerHTML=TABS.map(t=>
-        '<a onclick="switchTab(\''+t.id+'\')" id="tab-'+t.id+'">'+t.icon+' '+t.label+'</a>'
-    ).join('');
-}
-
-function switchTab(tab){
-    currentTab=tab;
-    document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('act'));
-    const el=document.getElementById('tab-'+tab);if(el)el.classList.add('act');
+/* ══════════════════ SIDEBAR ══════════════════ */
+function renderSidebar(){document.getElementById('sidebar').innerHTML=TABS.map(t=>'<a onclick="switchTab(\''+t.id+'\')" id="tab-'+t.id+'">'+t.icon+' '+t.label+'</a>').join('')}
+function switchTab(t){
+    currentTab=t;document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('act'));
+    const el=document.getElementById('tab-'+t);if(el)el.classList.add('act');
     const m=document.getElementById('mainContent');
-    if(tab==='site') renderSiteTab(m);
-    else if(tab==='parcours') renderCollectionTab(m,'parcours','Parcours',['year','place','desc'],{year:'Année / Période',place:'Établissement / Entreprise',desc:'Description'});
-    else if(tab==='projets') renderProjetsTab(m);
-    else if(tab==='veille') renderCollectionTab(m,'veille','Veille',['title','summary','url'],{title:'Sujet',summary:'Résumé',url:'Lien source (URL)'});
+    ({site:renderSiteTab,tags:renderTagsTab,parcours:()=>renderCollTab(m,'parcours','Parcours',['year','place','desc'],{year:'Année',place:'Établissement',desc:'Description'}),projets:renderProjetsTab,veille:()=>renderCollTab(m,'veille','Veille',['title','summary','url'],{title:'Sujet',summary:'Résumé',url:'Lien source'})})[t](m);
 }
 
-/* ══════════════════════════════════════
-   SITE TAB
-   ══════════════════════════════════════ */
+/* ══════════════════ RICH TEXT EDITOR ══════════════════ */
+function rteToolbar(id){
+    return `<div class="rte-toolbar">
+        <button onclick="rteCmd('${id}','bold')" title="Gras"><b>G</b></button>
+        <button onclick="rteCmd('${id}','italic')" title="Italique"><i>I</i></button>
+        <button onclick="rteCmd('${id}','underline')" title="Souligné"><u>S</u></button>
+        <div class="sep"></div>
+        <button onclick="rteCmd('${id}','insertUnorderedList')" title="Liste à puces">• Liste</button>
+        <button onclick="rteCmd('${id}','insertOrderedList')" title="Liste numérotée">1. Liste</button>
+        <div class="sep"></div>
+        <button onclick="rteBlockquote('${id}')" title="Citation">❝ Citation</button>
+        <button onclick="rteLink('${id}')" title="Lien">🔗 Lien</button>
+        <button onclick="rteImage('${id}')" title="Image">🖼️ Image</button>
+        <div class="sep"></div>
+        <button onclick="rteCmd('${id}','removeFormat')" title="Effacer le formatage">✕ Reset</button>
+    </div>
+    <div class="rte-area" id="${id}" contenteditable="true"></div>`;
+}
+function rteCmd(id,cmd){document.getElementById(id).focus();document.execCommand(cmd,false,null)}
+function rteBlockquote(id){document.getElementById(id).focus();document.execCommand('formatBlock',false,'blockquote')}
+function rteLink(id){const url=prompt('URL du lien :');if(url){document.getElementById(id).focus();document.execCommand('createLink',false,url)}}
+function rteImage(id){const url=prompt('URL de l\'image :');if(url){document.getElementById(id).focus();document.execCommand('insertImage',false,url)}}
+function rteGetHTML(id){return document.getElementById(id).innerHTML}
+function rteSetHTML(id,html){document.getElementById(id).innerHTML=html||''}
+
+/* ══════════════════ SITE TAB ══════════════════ */
 function renderSiteTab(m){
     const s=DATA.site;
-    m.innerHTML=
-        '<div class="notice">⏱ Après chaque sauvegarde, GitHub Pages met à jour ton site en <strong>~1 minute</strong>. Fais CTRL+F5 sur ton site pour voir les changements.</div>'+
-        '<div class="sec-head"><h3>Infos du site</h3></div>'+
-        '<div class="editor on">'+
-        field('s-name','Nom complet',s.name)+
-        field('s-title','Titre',s.title)+
-        field('s-desc','Description',s.description,'textarea')+
-        field('s-email','Email',s.email)+
-        field('s-loc','Ville',s.location)+
-        field('s-li','LinkedIn (URL)',s.linkedin||'')+
+    m.innerHTML='<div class="notice">⏱ Après chaque sauvegarde, GitHub Pages met ~1 minute à jour. CTRL+F5 pour voir les changements.</div>'+
+        '<div class="sec-head"><h3>Infos du site</h3></div><div class="editor on">'+
+        field('s-name','Nom complet',s.name)+field('s-title','Titre',s.title)+field('s-desc','Description',s.description,'textarea')+
+        field('s-email','Email',s.email)+field('s-loc','Ville',s.location)+field('s-li','LinkedIn (URL)',s.linkedin||'')+
         '<div class="editor-actions"><button class="btn btn-green" onclick="saveSite()">💾 Sauvegarder</button></div></div>';
 }
 async function saveSite(){
-    DATA.site.name=v('s-name');DATA.site.title=v('s-title');DATA.site.description=v('s-desc');
-    DATA.site.email=v('s-email');DATA.site.location=v('s-loc');DATA.site.linkedin=v('s-li');
-    try{await saveData();toast('Infos sauvegardées !')}catch(e){toast(e.message,true)}
+    DATA.site={name:v('s-name'),title:v('s-title'),description:v('s-desc'),email:v('s-email'),location:v('s-loc'),linkedin:v('s-li')};
+    try{await saveData();toast('Sauvegardé !')}catch(e){toast(e.message,1)}
 }
 
-/* ══════════════════════════════════════
-   GENERIC COLLECTION TAB (parcours, veille)
-   ══════════════════════════════════════ */
-function renderCollectionTab(m,key,label,fields,labels){
+/* ══════════════════ TAGS TAB ══════════════════ */
+function renderTagsTab(m){
+    let h='<div class="notice">Les étiquettes définissent les catégories de tes projets. Tu peux en créer autant que tu veux avec la couleur de ton choix.</div>';
+    h+='<div class="sec-head"><h3>Étiquettes</h3><button class="btn btn-sm" onclick="addTag()">+ Nouvelle étiquette</button></div>';
+    h+='<div id="editor-tags" class="editor"></div>';
+    const keys=Object.keys(DATA.tags);
+    if(!keys.length) h+='<p style="color:var(--dim)">Aucune étiquette. Clique sur "+ Nouvelle étiquette".</p>';
+    keys.forEach(k=>{
+        const t=DATA.tags[k];
+        h+='<div class="tag-row"><div class="swatch" style="background:'+esc(t.color)+'"></div><span class="tlabel">'+esc(t.label)+'</span><span class="tkey">'+esc(k)+'</span>'+
+            '<button class="btn btn-sm btn-outline" onclick="editTag(\''+k+'\')">✏️</button>'+
+            '<button class="btn btn-sm btn-danger" onclick="delTag(\''+k+'\')">🗑</button></div>';
+    });
+    m.innerHTML=h;
+}
+function addTag(){
+    const ed=document.getElementById('editor-tags');
+    ed.innerHTML='<h4>Nouvelle étiquette</h4>'+
+        field('t-key','Identifiant (sans accent, ex: cybersecurite)','')+
+        field('t-label','Nom affiché (ex: Cybersécurité)','')+
+        '<div class="field"><label>Couleur</label><input type="color" id="t-color" value="#38bdf8"></div>'+
+        '<div class="editor-actions"><button class="btn btn-green" onclick="saveTag(null)">💾 Créer</button><button class="btn btn-outline" onclick="switchTab(\'tags\')">Annuler</button></div>';
+    ed.classList.add('on');
+}
+function editTag(k){
+    const t=DATA.tags[k];
+    const ed=document.getElementById('editor-tags');
+    ed.innerHTML='<h4>Modifier l\'étiquette</h4>'+
+        '<div class="field"><label>Identifiant</label><input type="text" id="t-key" value="'+esc(k)+'" disabled style="opacity:.5"></div>'+
+        field('t-label','Nom affiché',t.label)+
+        '<div class="field"><label>Couleur</label><input type="color" id="t-color" value="'+t.color+'"></div>'+
+        '<div class="editor-actions"><button class="btn btn-green" onclick="saveTag(\''+k+'\')">💾 Sauvegarder</button><button class="btn btn-outline" onclick="switchTab(\'tags\')">Annuler</button></div>';
+    ed.classList.add('on');
+}
+async function saveTag(existingKey){
+    const key=existingKey||v('t-key').toLowerCase().replace(/[^a-z0-9]/g,'');
+    const label=v('t-label');const color=document.getElementById('t-color').value;
+    if(!key||!label){toast('Remplis tous les champs',1);return}
+    DATA.tags[key]={label,color};
+    try{await saveData();toast('Étiquette sauvegardée !');switchTab('tags')}catch(e){toast(e.message,1)}
+}
+async function delTag(k){
+    if(!confirm('Supprimer l\'étiquette "'+DATA.tags[k].label+'" ?'))return;
+    delete DATA.tags[k];
+    try{await saveData();toast('Supprimée');switchTab('tags')}catch(e){toast(e.message,1)}
+}
+
+/* ══════════════════ GENERIC COLLECTION (parcours, veille) ══════════════════ */
+function renderCollTab(m,key,label,fields,labels){
     const items=DATA[key]||[];
-    let h='<div class="notice">⏱ Changements visibles sur le site en ~1 minute après sauvegarde.</div>';
-    h+='<div class="sec-head"><h3>'+label+'</h3><button class="btn btn-sm" onclick="addGeneric(\''+key+'\')">+ Ajouter</button></div>';
+    let h='<div class="notice">⏱ Changements visibles en ~1 minute.</div>';
+    h+='<div class="sec-head"><h3>'+label+'</h3><button class="btn btn-sm" onclick="addColl(\''+key+'\')">+ Ajouter</button></div>';
     h+='<div id="editor-'+key+'" class="editor"></div>';
     items.forEach((it,i)=>{
         const title=it.title||it.place||it.year||'(vide)';
-        const sub=it.desc||it.summary||it.year||'';
-        h+='<div class="item"><div class="item-info"><h4>'+esc(title)+'</h4><p>'+esc(sub).substring(0,60)+'</p></div>'+
-            '<div class="item-actions"><button class="btn btn-sm btn-outline" onclick="editGeneric(\''+key+'\','+i+')">✏️</button>'+
-            '<button class="btn btn-sm btn-danger" onclick="delGeneric(\''+key+'\','+i+')">🗑</button></div></div>';
-    });
-    m.innerHTML=h;
+        h+='<div class="item"><div class="item-info"><h4>'+esc(title)+'</h4><p>'+esc(it.desc||it.summary||it.year||'').substring(0,60)+'</p></div>'+
+            '<div class="item-actions"><button class="btn btn-sm btn-outline" onclick="editColl(\''+key+'\','+i+')">✏️</button>'+
+            '<button class="btn btn-sm btn-danger" onclick="delColl(\''+key+'\','+i+')">🗑</button></div></div>';
+    });m.innerHTML=h;
 }
-function addGeneric(key){DATA[key].push({id:'i_'+Date.now()});showGenericEditor(key,DATA[key].length-1,true)}
-function editGeneric(key,i){showGenericEditor(key,i,false)}
-function showGenericEditor(key,idx,isNew){
-    const item=DATA[key][idx];
-    let fields,labels;
-    if(key==='parcours'){fields=['year','place','desc'];labels={year:'Année / Période',place:'Établissement',desc:'Description'}}
+function addColl(k){DATA[k].push({id:'i_'+Date.now()});showCollEditor(k,DATA[k].length-1,true)}
+function editColl(k,i){showCollEditor(k,i,false)}
+function showCollEditor(key,idx,isNew){
+    const item=DATA[key][idx];let fields,labels;
+    if(key==='parcours'){fields=['year','place','desc'];labels={year:'Année',place:'Établissement',desc:'Description'}}
     else{fields=['title','summary','url'];labels={title:'Sujet',summary:'Résumé',url:'Lien source'}}
     const ed=document.getElementById('editor-'+key);
     let h='<h4>'+(isNew?'Ajouter':'Modifier')+'</h4>';
-    fields.forEach(f=>{
-        h+=field('ed-'+f,labels[f],item[f]||'',f==='desc'||f==='summary'?'textarea':'input');
-    });
-    h+='<div class="editor-actions"><button class="btn btn-green" onclick="saveGeneric(\''+key+'\','+idx+')">💾 Sauvegarder</button>'+
-       '<button class="btn btn-outline" onclick="switchTab(\''+key+'\')">Annuler</button></div>';
+    fields.forEach(f=>{h+=field('ed-'+f,labels[f],item[f]||'',f==='desc'||f==='summary'?'textarea':'input')});
+    h+='<div class="editor-actions"><button class="btn btn-green" onclick="saveColl(\''+key+'\','+idx+')">💾 Sauvegarder</button><button class="btn btn-outline" onclick="switchTab(\''+key+'\')">Annuler</button></div>';
     ed.innerHTML=h;ed.classList.add('on');ed.scrollIntoView({behavior:'smooth'});
 }
-async function saveGeneric(key,idx){
+async function saveColl(key,idx){
     const item=DATA[key][idx];
-    let fields=key==='parcours'?['year','place','desc']:['title','summary','url'];
-    fields.forEach(f=>{item[f]=v('ed-'+f)});
-    try{await saveData();toast('Sauvegardé !');switchTab(key)}catch(e){toast(e.message,true)}
+    (key==='parcours'?['year','place','desc']:['title','summary','url']).forEach(f=>{item[f]=v('ed-'+f)});
+    try{await saveData();toast('Sauvegardé !');switchTab(key)}catch(e){toast(e.message,1)}
 }
-async function delGeneric(key,idx){
-    if(!confirm('Supprimer cet élément ?'))return;
-    DATA[key].splice(idx,1);
-    try{await saveData();toast('Supprimé');switchTab(key)}catch(e){toast(e.message,true)}
-}
+async function delColl(key,idx){if(!confirm('Supprimer ?'))return;DATA[key].splice(idx,1);try{await saveData();toast('Supprimé');switchTab(key)}catch(e){toast(e.message,1)}}
 
-/* ══════════════════════════════════════
-   PROJETS TAB (with file upload)
-   ══════════════════════════════════════ */
+/* ══════════════════ PROJETS TAB ══════════════════ */
 function renderProjetsTab(m){
     const items=DATA.projets||[];
-    let h='<div class="notice">⏱ Changements visibles sur le site en ~1 minute. Les documents uploadés sont stockés dans le dossier <strong>img/</strong> de ton dépôt.</div>';
-    h+='<div class="sec-head"><h3>Projets</h3><button class="btn btn-sm" onclick="addProjet()">+ Ajouter</button></div>';
+    let h='<div class="notice">⏱ Changements visibles en ~1 minute. Les fichiers uploadés vont dans le dossier <strong>img/</strong>.</div>';
+    h+='<div class="sec-head"><h3>Projets</h3><button class="btn btn-sm" onclick="addProj()">+ Ajouter</button></div>';
     h+='<div id="editor-projets" class="editor"></div>';
     items.forEach((p,i)=>{
+        const tagLabel=DATA.tags[p.category]?DATA.tags[p.category].label:p.category;
         const docs=p.documents?p.documents.length:0;
-        h+='<div class="item"><div class="item-info"><h4>'+esc(p.title||'(sans titre)')+'</h4>'+
-            '<p>'+esc(p.category||'')+' — '+esc(p.description||'').substring(0,50)+(docs?' — 📎'+docs+' doc(s)':'')+'</p></div>'+
-            '<div class="item-actions"><button class="btn btn-sm btn-outline" onclick="editProjet('+i+')">✏️</button>'+
-            '<button class="btn btn-sm btn-danger" onclick="delProjet('+i+')">🗑</button></div></div>';
-    });
-    m.innerHTML=h;
+        h+='<div class="item"><div class="item-info"><h4>'+esc(p.title||'(sans titre)')+'</h4><p>'+esc(tagLabel)+' — '+esc(p.description||'').substring(0,50)+(docs?' — 📎'+docs:'')+'</p></div>'+
+            '<div class="item-actions"><button class="btn btn-sm btn-outline" onclick="editProj('+i+')">✏️</button><button class="btn btn-sm btn-danger" onclick="delProj('+i+')">🗑</button></div></div>';
+    });m.innerHTML=h;
 }
-function addProjet(){DATA.projets.push({id:'pj_'+Date.now(),category:'infrastructure',documents:[]});showProjetEditor(DATA.projets.length-1,true)}
-function editProjet(i){showProjetEditor(i,false)}
-function showProjetEditor(idx,isNew){
-    const p=DATA.projets[idx];
-    if(!p.documents)p.documents=[];
+function addProj(){const keys=Object.keys(DATA.tags);DATA.projets.push({id:'pj_'+Date.now(),category:keys[0]||'',image:'',documents:[]});showProjEditor(DATA.projets.length-1,true)}
+function editProj(i){showProjEditor(i,false)}
+function showProjEditor(idx,isNew){
+    const p=DATA.projets[idx];if(!p.documents)p.documents=[];
     const ed=document.getElementById('editor-projets');
-    const cats=['infrastructure','securite','reseau','systeme'];
-    const catLabels={infrastructure:'Infrastructure',securite:'Sécurité',reseau:'Réseau',systeme:'Système'};
-    let catOpts=cats.map(c=>'<option value="'+c+'"'+(p.category===c?' selected':'')+'>'+catLabels[c]+'</option>').join('');
+    const tags=DATA.tags;const keys=Object.keys(tags);
+    let catOpts=keys.map(k=>'<option value="'+k+'"'+(p.category===k?' selected':'')+'>'+esc(tags[k].label)+'</option>').join('');
 
     let h='<h4>'+(isNew?'Nouveau projet':'Modifier le projet')+'</h4>';
     h+=field('ed-title','Titre',p.title||'');
-    h+='<div class="field"><label>Catégorie</label><select id="ed-cat">'+catOpts+'</select></div>';
+    h+='<div class="field"><label>Étiquette / Catégorie</label><select id="ed-cat">'+catOpts+'</select></div>';
     h+=field('ed-desc','Description courte',p.description||'');
-    h+=field('ed-content','Contenu détaillé',p.content||'','textarea');
-    h+='<div class="field"><small>Tu peux utiliser du HTML : &lt;p&gt;, &lt;strong&gt;, &lt;ul&gt;&lt;li&gt;, &lt;img src="..."&gt;</small></div>';
 
-    // Documents section
-    h+='<div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">';
-    h+='<label>📎 Documents et images joints</label>';
-    h+='<div class="doc-list-admin" id="doc-list-'+idx+'">';
+    // Project icon image
+    h+='<div class="field"><label>Icône du projet (image)</label><div class="img-upload-row">';
+    if(p.image) h+='<img class="img-preview" src="'+esc(p.image)+'">';
+    else h+='<div class="img-preview" style="display:flex;align-items:center;justify-content:center;font-size:1.5rem">📁</div>';
+    h+='<div><button class="btn btn-sm btn-outline" onclick="uploadProjIcon('+idx+')">📤 Changer l\'icône</button>';
+    if(p.image) h+=' <button class="btn btn-sm btn-danger" onclick="removeProjIcon('+idx+')">✕</button>';
+    h+='<input type="file" id="icon-input-'+idx+'" accept="image/*" style="display:none" onchange="handleIconUpload('+idx+',this.files[0])">';
+    h+='</div></div></div>';
+
+    // Rich text editor for content
+    h+='<div class="field"><label>Contenu détaillé</label>'+rteToolbar('rte-'+idx)+'</div>';
+
+    // Documents
+    h+='<div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)"><label>📎 Documents et images joints</label><div id="doc-list-'+idx+'">';
     p.documents.forEach((d,di)=>{
-        h+='<div class="doc-row"><span>'+fileIcon(d.name)+'</span><span class="name">'+esc(d.name)+'</span><span class="size">'+formatSize(d.size)+'</span>'+
-           '<button class="btn btn-sm btn-danger" onclick="removeDoc('+idx+','+di+')">✕</button></div>';
+        const ext=(d.name||'').split('.').pop().toLowerCase();
+        const isImg=['png','jpg','jpeg','gif','webp'].includes(ext);
+        h+='<div class="doc-row">'+(isImg?'🖼️':'📄')+' <span class="name">'+esc(d.name)+'</span><span class="sz">'+fmtSize(d.size)+'</span>'+
+            '<button class="btn btn-sm btn-danger" onclick="removeDoc('+idx+','+di+')">✕</button></div>';
     });
     h+='</div>';
-    h+='<div class="upload-zone" id="upload-zone-'+idx+'" onclick="document.getElementById(\'file-input-'+idx+'\').click()">';
-    h+='<p>📁 Clique ici ou glisse un fichier<br><small>Images (PNG, JPG, GIF, WebP) ou documents (PDF)</small></p>';
-    h+='<input type="file" id="file-input-'+idx+'" accept="image/*,.pdf" multiple onchange="handleUpload('+idx+',this.files)">';
-    h+='</div>';
-    h+='<div id="upload-status-'+idx+'" class="upload-progress"></div>';
-    h+='</div>';
-
-    h+='<div class="editor-actions"><button class="btn btn-green" onclick="saveProjet('+idx+')">💾 Sauvegarder</button>'+
-       '<button class="btn btn-outline" onclick="switchTab(\'projets\')">Annuler</button></div>';
-    ed.innerHTML=h;ed.classList.add('on');ed.scrollIntoView({behavior:'smooth'});
-
+    h+='<div class="upload-zone" id="uz-'+idx+'" onclick="document.getElementById(\'fi-'+idx+'\').click()"><p>📁 Clique ou glisse des fichiers ici<br><small>Images (PNG, JPG, WebP) ou PDF</small></p><input type="file" id="fi-'+idx+'" accept="image/*,.pdf" multiple onchange="handleDocUpload('+idx+',this.files)"></div>';
+    h+='<div id="us-'+idx+'" class="upload-progress"></div></div>';
+    h+='<div class="editor-actions"><button class="btn btn-green" onclick="saveProj('+idx+')">💾 Sauvegarder</button><button class="btn btn-outline" onclick="switchTab(\'projets\')">Annuler</button></div>';
+    ed.innerHTML=h;ed.classList.add('on');
+    // Set RTE content
+    rteSetHTML('rte-'+idx,p.content||'');
     // Drag & drop
-    const zone=document.getElementById('upload-zone-'+idx);
-    zone.addEventListener('dragover',e=>{e.preventDefault();zone.style.borderColor='var(--accent)'});
-    zone.addEventListener('dragleave',()=>{zone.style.borderColor='var(--border)'});
-    zone.addEventListener('drop',e=>{e.preventDefault();zone.style.borderColor='var(--border)';handleUpload(idx,e.dataTransfer.files)});
+    const zone=document.getElementById('uz-'+idx);
+    zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('drag')});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('drag'));
+    zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('drag');handleDocUpload(idx,e.dataTransfer.files)});
+    ed.scrollIntoView({behavior:'smooth'});
 }
 
-async function handleUpload(idx,files){
-    const status=document.getElementById('upload-status-'+idx);
+function uploadProjIcon(idx){document.getElementById('icon-input-'+idx).click()}
+async function handleIconUpload(idx,file){
+    if(!file)return;
+    try{toast('Upload de l\'icône...');const r=await uploadFile(file,'img');DATA.projets[idx].image=r.url;toast('Icône uploadée !');showProjEditor(idx,false)}catch(e){toast(e.message,1)}
+}
+function removeProjIcon(idx){DATA.projets[idx].image='';showProjEditor(idx,false)}
+async function handleDocUpload(idx,files){
+    const st=document.getElementById('us-'+idx);
     for(let i=0;i<files.length;i++){
-        const f=files[i];
-        status.textContent='Upload de '+f.name+' ('+(i+1)+'/'+files.length+')...';
-        try{
-            const result=await uploadFile(f,'img');
-            DATA.projets[idx].documents.push(result);
-            toast(f.name+' uploadé !');
-        }catch(e){toast('Erreur upload '+f.name,true)}
+        st.textContent='Upload '+files[i].name+' ('+(i+1)+'/'+files.length+')...';
+        try{const r=await uploadFile(files[i],'img');DATA.projets[idx].documents.push(r);toast(files[i].name+' uploadé !')}catch(e){toast('Erreur: '+e.message,1)}
     }
-    status.textContent='';
-    showProjetEditor(idx,false); // refresh editor
+    st.textContent='';showProjEditor(idx,false);
 }
-
-function removeDoc(projIdx,docIdx){
-    if(!confirm('Retirer ce document ?'))return;
-    DATA.projets[projIdx].documents.splice(docIdx,1);
-    showProjetEditor(projIdx,false);
-}
-
-async function saveProjet(idx){
+function removeDoc(pi,di){DATA.projets[pi].documents.splice(di,1);showProjEditor(pi,false)}
+async function saveProj(idx){
     const p=DATA.projets[idx];
-    p.title=v('ed-title');p.category=v('ed-cat');p.description=v('ed-desc');p.content=v('ed-content');
-    try{await saveData();toast('Projet sauvegardé !');switchTab('projets')}catch(e){toast(e.message,true)}
+    p.title=v('ed-title');p.category=v('ed-cat');p.description=v('ed-desc');
+    p.content=rteGetHTML('rte-'+idx);
+    try{await saveData();toast('Projet sauvegardé !');switchTab('projets')}catch(e){toast(e.message,1)}
 }
-async function delProjet(idx){
-    if(!confirm('Supprimer "'+DATA.projets[idx].title+'" ?'))return;
-    DATA.projets.splice(idx,1);
-    try{await saveData();toast('Supprimé');switchTab('projets')}catch(e){toast(e.message,true)}
-}
+async function delProj(idx){if(!confirm('Supprimer "'+DATA.projets[idx].title+'" ?'))return;DATA.projets.splice(idx,1);try{await saveData();toast('Supprimé');switchTab('projets')}catch(e){toast(e.message,1)}}
 
-/* ══════════════════════════════════════
-   UTILS
-   ══════════════════════════════════════ */
+/* ══════════════════ UTILS ══════════════════ */
 function v(id){const el=document.getElementById(id);return el?el.value:''}
 function esc(s){if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
-function field(id,label,val,type){
-    type=type||'input';
-    return '<div class="field"><label>'+label+'</label>'+
-        (type==='textarea'?'<textarea id="'+id+'">'+esc(val)+'</textarea>':'<input type="text" id="'+id+'" value="'+esc(val)+'">')+
-        '</div>';
-}
-function fileIcon(name){const e=(name||'').split('.').pop().toLowerCase();return e==='pdf'?'📄':['png','jpg','jpeg','gif','webp'].includes(e)?'🖼️':'📁'}
-function formatSize(b){if(!b)return'';if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';return(b/1048576).toFixed(1)+'MB'}
-function toast(msg,isErr){
-    const t=document.getElementById('toast');
-    t.textContent=msg;t.className='toast show '+(isErr?'toast-err':'toast-ok');
-    setTimeout(()=>t.classList.remove('show'),3000);
-}
+function field(id,lbl,val,type){return '<div class="field"><label>'+lbl+'</label>'+(type==='textarea'?'<textarea id="'+id+'">'+esc(val)+'</textarea>':'<input type="text" id="'+id+'" value="'+esc(val)+'">')+'</div>'}
+function fmtSize(b){if(!b)return'';if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';return(b/1048576).toFixed(1)+'MB'}
+function toast(msg,isErr){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show '+(isErr?'toast-err':'toast-ok');setTimeout(()=>t.classList.remove('show'),3000)}
 </script>
 </body>
 </html>

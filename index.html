@@ -6,17 +6,11 @@
     <meta name="description" content="Portfolio BTS SIO SISR — Administrateur Systèmes & Réseaux">
     <title>Portfolio BTS SIO SISR</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg:#0a0e17;--bg-card:#111827;--border:#1e2d3d;
-            --accent:#38bdf8;--accent-glow:rgba(56,189,248,0.12);
-            --green:#34d399;--orange:#fb923c;--purple:#c084fc;--red:#f87171;
-            --text:#e2e8f0;--dim:#64748b;
-            --font:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;
-        }
+        :root{--bg:#0a0e17;--bg-card:#111827;--border:#1e2d3d;--accent:#38bdf8;--accent-glow:rgba(56,189,248,.12);--green:#34d399;--orange:#fb923c;--purple:#c084fc;--red:#f87171;--text:#e2e8f0;--dim:#64748b;--font:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace}
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth}
         body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
@@ -30,10 +24,10 @@
         .nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
         .nav-logo{font-family:var(--mono);font-weight:700;font-size:1.1rem}.nav-logo .a{color:var(--accent)}
         .nav-links{display:flex;gap:2rem;align-items:center}
-        .nav-links a{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim);transition:color .2s;position:relative}
-        .nav-links a:hover{color:var(--accent)}
-        .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width .3s}
-        .nav-links a:hover::after{width:100%}
+        .nav-links a{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim);transition:color .2s;position:relative;padding-bottom:6px}
+        .nav-links a:hover,.nav-links a.active{color:var(--accent)}
+        .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width .3s}
+        .nav-links a:hover::after,.nav-links a.active::after{width:100%}
         .nav-cta{background:var(--accent)!important;color:var(--bg)!important;padding:.5rem 1.2rem;border-radius:6px;font-weight:700!important}
         .nav-cta::after{display:none!important}.nav-cta:hover{opacity:.85}
         .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:0;border:0;padding:4px}
@@ -44,7 +38,7 @@
         .mob-menu{display:none;position:fixed;inset:0;background:rgba(10,14,23,.97);backdrop-filter:blur(20px);z-index:999;flex-direction:column;justify-content:center;align-items:center;gap:2rem}
         .mob-menu.on{display:flex}
         .mob-menu a{font-size:1.5rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim);transition:color .2s}
-        .mob-menu a:hover{color:var(--accent)}
+        .mob-menu a:hover,.mob-menu a.active{color:var(--accent)}
 
         /* HERO */
         .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 2rem 4rem;position:relative}
@@ -76,22 +70,19 @@
         #projets{background:#080c14}
         .pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
         .pc{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative;overflow:hidden}
-        .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;opacity:0;transition:opacity .3s}
+        .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--green));opacity:0;transition:opacity .3s}
         .pc:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(56,189,248,.08)}
         .pc:hover::before{opacity:1}
         .pc:hover h3{color:var(--accent)}
-
-        /* Tags with fixed colors - no accent dependency */
-        .tag{display:inline-block;font-family:var(--mono);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:.25rem .75rem;border-radius:100px;margin-bottom:1rem}
-        .tag-infrastructure{color:var(--accent);background:var(--accent-glow)}
-        .tag-securite{color:var(--green);background:rgba(52,211,153,.12)}
-        .tag-reseau{color:var(--orange);background:rgba(251,146,60,.12)}
-        .tag-systeme{color:var(--purple);background:rgba(192,132,252,.12)}
-
-        .pc::before{background:linear-gradient(90deg,var(--accent),var(--green))}
-        .pc h3{font-size:1.3rem;font-weight:700;margin-bottom:.75rem;transition:color .2s}
-        .pc p{color:var(--dim);font-size:.9rem}
+        .pc-head{display:flex;align-items:flex-start;gap:1rem;margin-bottom:.75rem}
+        .pc-icon{width:48px;height:48px;border-radius:10px;object-fit:contain;background:rgba(255,255,255,.05);border:1px solid var(--border);flex-shrink:0}
+        .pc-icon-placeholder{width:48px;height:48px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+        .pc-head-text{flex:1;min-width:0}
+        .tag{display:inline-block;font-family:var(--mono);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:.25rem .75rem;border-radius:100px;margin-bottom:.4rem}
+        .pc h3{font-size:1.3rem;font-weight:700;transition:color .2s}
+        .pc>p{color:var(--dim);font-size:.9rem}
         .pc-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.2rem;font-size:.78rem;font-weight:600;color:var(--accent);letter-spacing:.5px}
+        .pc-docs{font-size:.7rem;color:var(--dim);margin-top:.5rem}
 
         /* MODAL */
         .mo{position:fixed;inset:0;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);z-index:2000;display:none;justify-content:center;align-items:center;padding:2rem}
@@ -106,13 +97,11 @@
         .mo-body ul{margin:.5rem 0;padding-left:1.5rem}
         .mo-body li{margin-bottom:.3rem}
         .mo-body img{max-width:100%;border-radius:8px;margin:1rem 0;border:1px solid var(--border)}
-
-        /* Documents list in modal */
+        .mo-body blockquote{border-left:3px solid var(--accent);padding-left:1rem;margin:1rem 0;color:var(--text);font-style:italic}
         .doc-list{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
         .doc-list h4{font-size:.85rem;font-weight:700;color:var(--accent);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:1px}
         .doc-item{display:flex;align-items:center;gap:.8rem;padding:.6rem .8rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;margin-bottom:.5rem;font-size:.85rem;transition:border-color .2s}
         .doc-item:hover{border-color:var(--accent)}
-        .doc-icon{font-size:1.2rem;flex-shrink:0}
         .doc-name{flex:1;color:var(--text);font-weight:600}
         .doc-link{color:var(--accent);font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:1px}
 
@@ -133,15 +122,13 @@
         .ci p{color:var(--dim);margin-bottom:2rem}
         .cd{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;color:var(--dim);font-size:.9rem}
         .cd .ic{width:36px;height:36px;border-radius:8px;background:var(--accent-glow);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-        .cd a{color:var(--accent);transition:opacity .2s}
-        .cd a:hover{opacity:.7}
+        .cd a{color:var(--accent);transition:opacity .2s}.cd a:hover{opacity:.7}
         .cf{display:flex;flex-direction:column;gap:1rem}
         .cf input,.cf textarea{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;color:var(--text);font-family:var(--font);font-size:.9rem;transition:border-color .2s;outline:0;width:100%}
         .cf input:focus,.cf textarea:focus{border-color:var(--accent)}
         .cf textarea{min-height:140px;resize:vertical}
-        .cf button{background:var(--accent);color:var(--bg);border:0;border-radius:10px;padding:.9rem 2rem;font-family:var(--font);font-size:.9rem;font-weight:700;cursor:pointer;transition:opacity .2s;letter-spacing:.5px}
+        .cf button{background:var(--accent);color:var(--bg);border:0;border-radius:10px;padding:.9rem 2rem;font-family:var(--font);font-size:.9rem;font-weight:700;cursor:pointer;transition:opacity .2s}
         .cf button:hover{opacity:.85}
-
         footer{text-align:center;padding:2rem;color:var(--dim);font-size:.75rem;border-top:1px solid var(--border);font-family:var(--mono)}
 
         @media(max-width:768px){
@@ -159,20 +146,20 @@
 <nav class="nav" id="navbar">
     <div class="nav-inner">
         <div class="nav-logo"><span class="a">&gt;_</span> <span id="nav-name">Portfolio</span></div>
-        <div class="nav-links">
-            <a href="#parcours">Parcours</a>
-            <a href="#projets">Projets</a>
-            <a href="#veille">Veille</a>
-            <a href="#contact" class="nav-cta">Contact</a>
+        <div class="nav-links" id="navLinks">
+            <a href="#parcours" data-section="parcours">Parcours</a>
+            <a href="#projets" data-section="projets">Projets</a>
+            <a href="#veille" data-section="veille">Veille</a>
+            <a href="#contact" class="nav-cta" data-section="contact">Contact</a>
         </div>
         <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
 </nav>
 <div class="mob-menu" id="mobMenu">
-    <a href="#parcours" onclick="closeMob()">Parcours</a>
-    <a href="#projets" onclick="closeMob()">Projets</a>
-    <a href="#veille" onclick="closeMob()">Veille</a>
-    <a href="#contact" onclick="closeMob()">Contact</a>
+    <a href="#parcours" data-section="parcours" onclick="closeMob()">Parcours</a>
+    <a href="#projets" data-section="projets" onclick="closeMob()">Projets</a>
+    <a href="#veille" data-section="veille" onclick="closeMob()">Veille</a>
+    <a href="#contact" data-section="contact" onclick="closeMob()">Contact</a>
 </div>
 
 <header class="hero" id="accueil">
@@ -182,57 +169,47 @@
     <div class="hero-scroll"><span>Découvrir</span><span>↓</span></div>
 </header>
 
-<section id="parcours">
-    <div class="sc">
-        <div class="sh" data-aos="fade-right"><div class="sl">// Parcours</div><h2 class="st">Mon parcours de formation</h2></div>
-        <div class="tl" id="parcours-list"></div>
-    </div>
-</section>
+<section id="parcours"><div class="sc">
+    <div class="sh" data-aos="fade-right"><div class="sl">// Parcours</div><h2 class="st">Mon parcours de formation</h2></div>
+    <div class="tl" id="parcours-list"></div>
+</div></section>
 
-<section id="projets">
-    <div class="sc">
-        <div class="sh" data-aos="fade-right"><div class="sl">// Réalisations</div><h2 class="st">Projets techniques</h2></div>
-        <div class="pg" id="projets-list"></div>
-    </div>
-</section>
+<section id="projets"><div class="sc">
+    <div class="sh" data-aos="fade-right"><div class="sl">// Réalisations</div><h2 class="st">Projets techniques</h2></div>
+    <div class="pg" id="projets-list"></div>
+</div></section>
 
-<div class="mo" id="modal">
-    <div class="mo-box">
-        <button class="mo-close" onclick="closeModal()">✕</button>
-        <div id="modal-inner"></div>
-    </div>
-</div>
+<div class="mo" id="modal"><div class="mo-box">
+    <button class="mo-close" onclick="closeModal()">✕</button>
+    <div id="modal-inner"></div>
+</div></div>
 
-<section id="veille">
-    <div class="sc">
-        <div class="sh" data-aos="fade-right"><div class="sl">// Veille informatique</div><h2 class="st">Veille technologique</h2></div>
-        <div class="vg" id="veille-list"></div>
-    </div>
-</section>
+<section id="veille"><div class="sc">
+    <div class="sh" data-aos="fade-right"><div class="sl">// Veille informatique</div><h2 class="st">Veille technologique</h2></div>
+    <div class="vg" id="veille-list"></div>
+</div></section>
 
-<section id="contact">
-    <div class="sc">
-        <div class="sh" data-aos="fade-right"><div class="sl">// Contact</div><h2 class="st">Me contacter</h2></div>
-        <div class="cw">
-            <div class="ci" data-aos="fade-up">
-                <h3>Restons en contact</h3>
-                <p>N'hésitez pas à me contacter pour toute question relative à mon parcours ou à mes projets.</p>
-                <div class="cd"><div class="ic">📧</div><span id="c-email">—</span></div>
-                <div class="cd"><div class="ic">📍</div><span id="c-loc">—</span></div>
-                <div class="cd" id="c-li-wrap" style="display:none"><div class="ic">💼</div><a id="c-li" href="#" target="_blank" rel="noopener">LinkedIn</a></div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="100">
-                <div class="cf">
-                    <input type="text" id="f-name" placeholder="Votre nom">
-                    <input type="email" id="f-email" placeholder="Votre email">
-                    <textarea id="f-msg" placeholder="Votre message..."></textarea>
-                    <button type="button" onclick="sendForm()">Envoyer le message</button>
-                    <p id="f-status" style="font-size:.85rem;display:none"></p>
-                </div>
+<section id="contact"><div class="sc">
+    <div class="sh" data-aos="fade-right"><div class="sl">// Contact</div><h2 class="st">Me contacter</h2></div>
+    <div class="cw">
+        <div class="ci" data-aos="fade-up">
+            <h3>Restons en contact</h3>
+            <p>N'hésitez pas à me contacter pour toute question relative à mon parcours ou à mes projets.</p>
+            <div class="cd"><div class="ic">📧</div><span id="c-email">—</span></div>
+            <div class="cd"><div class="ic">📍</div><span id="c-loc">—</span></div>
+            <div class="cd" id="c-li-wrap" style="display:none"><div class="ic">💼</div><a id="c-li" href="#" target="_blank" rel="noopener">LinkedIn</a></div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100">
+            <div class="cf">
+                <input type="text" id="f-name" placeholder="Votre nom">
+                <input type="email" id="f-email" placeholder="Votre email">
+                <textarea id="f-msg" placeholder="Votre message..."></textarea>
+                <button type="button" onclick="sendForm()">Envoyer le message</button>
+                <p id="f-status" style="font-size:.85rem;display:none"></p>
             </div>
         </div>
     </div>
-</section>
+</div></section>
 
 <footer><p id="footer-text"></p></footer>
 
@@ -240,44 +217,61 @@
 <script>
 AOS.init({duration:700,once:true,offset:80});
 
-/* ── Category display labels (keys are always ASCII in content.json) ── */
-const CAT_LABELS = {
-    infrastructure: 'Infrastructure',
-    securite: 'Sécurité',
-    reseau: 'Réseau',
-    systeme: 'Système'
-};
+let DATA=null,TAGS={};
 
-/* ── NAV ── */
-window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',scrollY>50)});
+/* ── NAV SCROLL + ACTIVE SECTION ── */
+const sections=['parcours','projets','veille','contact'];
+function updateActiveNav(){
+    let current='';
+    const offset=window.innerHeight/3;
+    sections.forEach(id=>{
+        const el=document.getElementById(id);
+        if(el&&el.getBoundingClientRect().top<=offset) current=id;
+    });
+    document.querySelectorAll('[data-section]').forEach(a=>{
+        a.classList.toggle('active',a.dataset.section===current);
+    });
+}
+window.addEventListener('scroll',()=>{
+    document.getElementById('navbar').classList.toggle('scrolled',scrollY>50);
+    updateActiveNav();
+});
+
+/* ── MOBILE ── */
 const burger=document.getElementById('burger'),mob=document.getElementById('mobMenu');
 burger.addEventListener('click',()=>{burger.classList.toggle('on');mob.classList.toggle('on');document.body.style.overflow=mob.classList.contains('on')?'hidden':''});
 function closeMob(){burger.classList.remove('on');mob.classList.remove('on');document.body.style.overflow=''}
 
+/* ── TAG HELPERS ── */
+function tagHTML(catKey){
+    const t=TAGS[catKey]||{label:catKey,color:'#38bdf8'};
+    return '<span class="tag" style="color:'+t.color+';background:'+t.color+'1f">'+esc(t.label)+'</span>';
+}
+function catIcon(cat){
+    const icons={infrastructure:'🖥️',securite:'🔒',reseau:'🌐',systeme:'⚙️'};
+    return icons[cat]||'📁';
+}
+
 /* ── MODAL ── */
 function openModal(idx){
-    const proj=DATA.projets[idx];
-    const cat=proj.category.toLowerCase();
-    const label=CAT_LABELS[cat]||proj.category;
+    const p=DATA.projets[idx];
     let docsHtml='';
-    if(proj.documents && proj.documents.length>0){
+    if(p.documents&&p.documents.length){
         docsHtml='<div class="doc-list"><h4>📎 Documents joints</h4>';
-        proj.documents.forEach(d=>{
+        p.documents.forEach(d=>{
             const ext=(d.name||'').split('.').pop().toLowerCase();
-            const icon=ext==='pdf'?'📄':ext==='png'||ext==='jpg'||ext==='jpeg'||ext==='gif'||ext==='webp'?'🖼️':'📁';
-            const isImg=ext==='png'||ext==='jpg'||ext==='jpeg'||ext==='gif'||ext==='webp';
+            const isImg=['png','jpg','jpeg','gif','webp'].includes(ext);
             docsHtml+=isImg
-                ?'<img src="'+esc(d.url)+'" alt="'+esc(d.name)+'" style="max-width:100%;border-radius:8px;margin:.5rem 0;border:1px solid var(--border)">'
-                :'<a href="'+esc(d.url)+'" target="_blank" rel="noopener" class="doc-item"><span class="doc-icon">'+icon+'</span><span class="doc-name">'+esc(d.name)+'</span><span class="doc-link">Ouvrir ↗</span></a>';
+                ?'<img src="'+esc(d.url)+'" alt="'+esc(d.name)+'">'
+                :'<a href="'+esc(d.url)+'" target="_blank" rel="noopener" class="doc-item"><span>📄</span><span class="doc-name">'+esc(d.name)+'</span><span class="doc-link">Ouvrir ↗</span></a>';
         });
         docsHtml+='</div>';
     }
     document.getElementById('modal-inner').innerHTML=
-        '<span class="tag tag-'+cat+'">'+esc(label)+'</span>'+
-        '<h2>'+esc(proj.title)+'</h2><div class="mo-div"></div>'+
-        '<div class="mo-body">'+proj.content+docsHtml+'</div>';
-    document.getElementById('modal').classList.add('on');
-    document.body.style.overflow='hidden';
+        tagHTML(p.category)+
+        '<h2>'+esc(p.title)+'</h2><div class="mo-div"></div>'+
+        '<div class="mo-body">'+p.content+docsHtml+'</div>';
+    document.getElementById('modal').classList.add('on');document.body.style.overflow='hidden';
 }
 function closeModal(){document.getElementById('modal').classList.remove('on');document.body.style.overflow=''}
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
@@ -291,12 +285,9 @@ function sendForm(){
 }
 
 /* ── RENDER ── */
-let DATA=null;
 function renderSite(d){
-    DATA=d;
-    const s=d.site;
-    const names=s.name.split(' ');
-    const first=names[0], last=names.slice(1).join(' ');
+    DATA=d;TAGS=d.tags||{};
+    const s=d.site,names=s.name.split(' '),first=names[0],last=names.slice(1).join(' ');
     document.getElementById('nav-name').textContent=first.charAt(0)+'.'+last.toUpperCase();
     document.getElementById('hero-badge').textContent='● '+s.title;
     document.getElementById('hero-name').innerHTML=esc(first)+'<br><span class="hl">'+esc(last.toUpperCase())+'</span>';
@@ -304,52 +295,34 @@ function renderSite(d){
     document.title=s.name+' — '+s.title;
     document.getElementById('c-email').textContent=s.email;
     document.getElementById('c-loc').textContent=s.location;
-    if(s.linkedin){
-        const liWrap=document.getElementById('c-li-wrap');
-        const liLink=document.getElementById('c-li');
-        liLink.href=s.linkedin;
-        liLink.textContent='Voir mon profil LinkedIn';
-        liWrap.style.display='flex';
-    }
+    if(s.linkedin){document.getElementById('c-li').href=s.linkedin;document.getElementById('c-li').textContent='Voir mon profil LinkedIn';document.getElementById('c-li-wrap').style.display='flex'}
     document.getElementById('footer-text').textContent='© 2026 '+s.name+' — Portfolio BTS SIO SISR — GitHub Pages';
 
-    // Parcours
     document.getElementById('parcours-list').innerHTML=d.parcours.map((p,i)=>
-        '<div class="tl-item" data-aos="fade-up" data-aos-delay="'+(i*100)+'">'+
-        '<div class="tl-year">'+esc(p.year)+'</div>'+
-        '<div class="tl-place">'+esc(p.place)+'</div>'+
-        '<div class="tl-desc">'+esc(p.desc)+'</div></div>'
+        '<div class="tl-item" data-aos="fade-up" data-aos-delay="'+(i*100)+'"><div class="tl-year">'+esc(p.year)+'</div><div class="tl-place">'+esc(p.place)+'</div><div class="tl-desc">'+esc(p.desc)+'</div></div>'
     ).join('');
 
-    // Projets
     document.getElementById('projets-list').innerHTML=d.projets.map((p,i)=>{
-        const cat=p.category.toLowerCase();
-        const label=CAT_LABELS[cat]||p.category;
-        const hasDoc=p.documents&&p.documents.length>0;
+        const hasDoc=p.documents&&p.documents.length;
+        const imgHtml=p.image
+            ?'<img class="pc-icon" src="'+esc(p.image)+'" alt="">'
+            :'<div class="pc-icon-placeholder">'+catIcon(p.category)+'</div>';
         return '<div class="pc" data-aos="fade-up" data-aos-delay="'+(i*100)+'" onclick="openModal('+i+')">'+
-            '<span class="tag tag-'+cat+'">'+esc(label)+'</span>'+
-            '<h3>'+esc(p.title)+'</h3>'+
+            '<div class="pc-head">'+imgHtml+'<div class="pc-head-text">'+tagHTML(p.category)+'<h3>'+esc(p.title)+'</h3></div></div>'+
             '<p>'+esc(p.description)+'</p>'+
-            (hasDoc?'<span style="font-size:.7rem;color:var(--dim);margin-top:.5rem;display:block">📎 '+p.documents.length+' document(s) joint(s)</span>':'')+
+            (hasDoc?'<div class="pc-docs">📎 '+p.documents.length+' document(s)</div>':'')+
             '<span class="pc-link">Voir le dossier →</span></div>';
     }).join('');
 
-    // Veille
     document.getElementById('veille-list').innerHTML=d.veille.map((v,i)=>
-        '<div class="vc" data-aos="fade-up" data-aos-delay="'+(i*100)+'">'+
-        '<h3>'+esc(v.title)+'</h3><p>'+esc(v.summary)+'</p>'+
-        (v.url?'<a href="'+esc(v.url)+'" target="_blank" rel="noopener" class="vc-src">Lire la source ↗</a>':'<span class="vc-src" style="opacity:.4">Source à ajouter</span>')+
-        '</div>'
+        '<div class="vc" data-aos="fade-up" data-aos-delay="'+(i*100)+'"><h3>'+esc(v.title)+'</h3><p>'+esc(v.summary)+'</p>'+
+        (v.url?'<a href="'+esc(v.url)+'" target="_blank" rel="noopener" class="vc-src">Lire la source ↗</a>':'<span class="vc-src" style="opacity:.4">Source à ajouter</span>')+'</div>'
     ).join('');
-
     setTimeout(()=>AOS.refresh(),100);
 }
 function esc(s){if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 
-/* ── LOAD ── */
-fetch('data/content.json?v='+Date.now()).then(r=>r.json()).then(renderSite).catch(()=>{
-    document.getElementById('hero-desc').textContent='Erreur de chargement.';
-});
+fetch('data/content.json?v='+Date.now()).then(r=>r.json()).then(renderSite).catch(()=>{document.getElementById('hero-desc').textContent='Erreur de chargement.'});
 </script>
 </body>
 </html>
